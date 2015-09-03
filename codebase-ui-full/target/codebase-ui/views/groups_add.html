@@ -1,0 +1,28 @@
+<h2>Add Group</h2>
+<h3><a href="#/groups">Back</a></h3>
+
+
+<form novalidate name="addGroupForm" ng-submit="addGroup(addGroupForm.$valid, newGroup)">
+
+    
+     <div class="control">
+         <input ng-model="newGroup.name" id="name" name="name" type="text" placeholder="Group Name" required>
+     </div>
+    
+    <div class="control full">
+          <label >Teachers</label>
+           <div class="checkbox" ng-repeat="teacher in teachers">
+               <input type="checkbox"> {{ teacher.name }}
+           </div>
+     </div>
+     
+     <div class="control full">
+          <label >Students</label>
+           <div class="checkbox" ng-repeat="student in students">
+               <input type="checkbox"> {{ student.name }}
+           </div>
+     </div>
+
+     <button  type="submit" value="Add" class="button block">Add Group</button>
+
+ </form>

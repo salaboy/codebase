@@ -1,0 +1,34 @@
+{
+  "name": "codebase",
+  "description": "simple web app for codebase",
+  "version": "0.0.1",
+  "homepage": "marylandsupreme.tumblr.com",
+  "license": "ASL 2.0",
+  "dependencies": {
+    "angular-animate": "~1.4.2",
+    "angular-cookies": "~1.4.2",
+    "angular-route": "~1.4.2",
+    "bootstrap": "~3.3.5",
+    "angularjs-file-upload": "5.0.9",
+    "FileAPI": "2.0.11",
+    "imagesloaded": "3.1.8",
+    "angular-filter": "0.5.4",
+    "angular-sanitize": "1.4.4",
+    "textAngular":"*"
+  },
+  "authors": [
+    "salaboy@gmail.com"
+  ],
+  "main": "app/index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "resolutions": {
+    "angular": "1.4.4"
+  }
+}

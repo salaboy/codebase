@@ -7,9 +7,6 @@ package org.codebase.services.endpoints.user.api;
 
 import java.io.Serializable;
 import javax.ejb.Local;
-import javax.servlet.http.HttpServletRequest;
-
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import javax.ws.rs.FormParam;
@@ -22,7 +19,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.codebase.core.exceptions.ServiceException;
-import org.codebase.services.util.Payload;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 

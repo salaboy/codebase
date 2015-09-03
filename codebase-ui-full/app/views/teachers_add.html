@@ -1,0 +1,26 @@
+<h2>Add  Teacher</h2>
+<h3><a href="#/teachers">Back</a></h3>
+
+
+<form novalidate name="addTeacherForm" ng-submit="addTeacher(addTeacherForm.$valid, newTeacher)">
+
+     <div class="control">
+         <input ng-model="newTeacher.email" id="email" name="email" type="email" placeholder="Email" required>
+         <div class="error-msg" ng-show="addTeacherForm.email.$invalid && addSubmitted">Enter a valid email.</div>
+     </div>
+     <div class="control">
+         <input ng-model="newTeacher.name" id="name" name="name" type="text" placeholder="Name and Lastname" required>
+     </div>
+     <div class="control full">
+         <input ng-model="newTeacher.password" type="text" id="pass" name="password" placeholder="Password" required>
+     </div>
+     
+     <div class="control full">
+           <div class="checkbox" ng-repeat="group in groups">
+               <input type="checkbox"> {{ group.name }}
+           </div>
+     </div>
+
+     <button  type="submit" value="Add" class="button block">Add teacher</button>
+
+ </form>

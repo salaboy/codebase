@@ -16,6 +16,7 @@
         <module>codebase-user-core</module>
         <module>codebase-user-services</module>
         <module>codebase-user-web</module>
+        <module>codebase-ui-full</module>
     </modules>
   
     <properties>

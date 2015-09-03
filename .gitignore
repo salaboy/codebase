@@ -17,3 +17,7 @@ hs_err_pid*
 /codebase-user-model/target/
 /codebase-user-core/target/
 /codebase-user-services/target/
+/codebase-ui/app/bower_components/
+/codebase-ui/nbproject/private/
+/codebase-ui-full/app/bower_components/
+/codebase-ui-full/nbproject/private/

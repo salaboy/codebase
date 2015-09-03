@@ -1,0 +1,10 @@
+<h2>Students list</h2>
+<h3><a href="#/students/add">New Student</a></h3>
+
+
+<div ng-repeat="student in students">
+   <div><a href="#/students/{{student.id}}">{{student.name}}</a></div>
+   <div> {{student.groups}} </div>
+   <a href>Delete</a>
+   <hr>
+</div>
