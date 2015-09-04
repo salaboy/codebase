@@ -147,6 +147,22 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
+    public void updatePassword(Long user_id, String oldPassword, String newPassword) throws ServiceException {
+        User u = pm.find(User.class, user_id);
+        if (u == null) {
+            throw new ServiceException("User doesn't exist: " + user_id);
+        }
+        if(u.getPassword().equals(CodebaseUtil.hash(oldPassword))){
+            u.setPassword(CodebaseUtil.hash(newPassword));
+            pm.merge(u);
+        }else{
+            throw new ServiceException("Old Password doesn't match. Password not updated! ");
+        }
+    }
+    
+    
+
+    @Override
     public List<User> getAll() {
         return pm.createNamedQuery("User.getAll", User.class).getResultList();
     }

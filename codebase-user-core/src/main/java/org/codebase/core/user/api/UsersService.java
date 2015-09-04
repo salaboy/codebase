@@ -31,6 +31,8 @@ public interface UsersService {
     public User getById(Long user_id);
 
     public void updateFirstLogin(Long user_id) throws ServiceException;
+    
+    public void updatePassword(Long user_id, String oldPassword, String newPassword) throws ServiceException;
 
     public void updateFirstName(Long user_id, String firstname) throws ServiceException;
 

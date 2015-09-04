@@ -63,6 +63,12 @@ public interface UserEndpointService extends Serializable {
     @Produces({MediaType.APPLICATION_JSON})
     Response updateLive(@NotNull @PathParam("id") Long user_id, @FormParam("live") String live) throws ServiceException;
 
+    @Path("{id}/password")
+    @PUT
+    @Consumes({MediaType.APPLICATION_FORM_URLENCODED})
+    @Produces({MediaType.APPLICATION_JSON})
+    Response updatePassword(@NotNull @PathParam("id") Long user_id, @FormParam("oldPassword") String oldPassword, @FormParam("newPassword") String newPassword) throws ServiceException;
+    
     @Path("{id}/firstname")
     @PUT
     @Consumes({MediaType.APPLICATION_FORM_URLENCODED})

@@ -149,4 +149,12 @@ public class UserEndpointServiceImpl implements UserEndpointService {
         return Response.ok().build();
     }
 
+    @Override
+    public Response updatePassword(Long user_id, String oldPassword, String newPassword) throws ServiceException {
+        usersService.updatePassword(user_id, oldPassword, newPassword);
+        return Response.ok().build();
+    }
+    
+    
+
 }
