@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata modelVersion="1.1.0">
   <groupId>org.codebase</groupId>
-  <artifactId>codebase-user-model</artifactId>
+  <artifactId>codebase-user-core</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <versioning>
     <snapshot>
-      <timestamp>20150907.163651</timestamp>
+      <timestamp>20150907.163732</timestamp>
       <buildNumber>1</buildNumber>
     </snapshot>
-    <lastUpdated>20150907163651</lastUpdated>
+    <lastUpdated>20150907163732</lastUpdated>
     <snapshotVersions>
       <snapshotVersion>
         <extension>jar</extension>
-        <value>1.0.0-20150907.163651-1</value>
-        <updated>20150907163651</updated>
+        <value>1.0.0-20150907.163732-1</value>
+        <updated>20150907163732</updated>
       </snapshotVersion>
       <snapshotVersion>
         <extension>pom</extension>
-        <value>1.0.0-20150907.163651-1</value>
-        <updated>20150907163651</updated>
+        <value>1.0.0-20150907.163732-1</value>
+        <updated>20150907163732</updated>
       </snapshotVersion>
     </snapshotVersions>
   </versioning>
