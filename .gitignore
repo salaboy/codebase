@@ -22,3 +22,6 @@ hs_err_pid*
 /codebase-ui-full/app/bower_components/
 /codebase-ui-full/nbproject/private/
 /codebase-ui-full/target/
+/codebase-kie/target/
+/kie-server-docker/target/
+/kie-server-docker-build/target/

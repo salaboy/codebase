@@ -77,6 +77,8 @@ public class User implements Serializable {
     @IndexedEmbedded
     @Field(analyze = Analyze.NO, store = Store.YES)
     private List<String> roles = new ArrayList<String>();
+    
+    
 
     public User() {
     }
