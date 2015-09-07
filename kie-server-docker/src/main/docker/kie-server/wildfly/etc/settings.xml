@@ -46,7 +46,7 @@ under the License.
                 <repository>
                     <id>custom</id>
                     <name>Custom Repo</name>
-                    <url>http://raw.github.com/salaboy/kie-examples/mvn-repo</url>
+                    <url>http://raw.github.com/salaboy/codebase/mvn-repo</url>
                     <!--url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url-->
                     <layout>default</layout>
                     <snapshots>

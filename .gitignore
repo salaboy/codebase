@@ -25,3 +25,4 @@ hs_err_pid*
 /codebase-kie/target/
 /kie-server-docker/target/
 /kie-server-docker-build/target/
+/target/

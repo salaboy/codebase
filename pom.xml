@@ -22,10 +22,11 @@
   
     <properties>
         <!-- Define the version of the JBoss BOMs we want to import to specify tested stacks. -->
-        <kie.version>6.3.0-SNAPSHOT</kie.version>
-        <java.min.version>1.7</java.min.version>
-        <maven.min.version>3.0.0</maven.min.version>
+        <kie.version>6.4.0-SNAPSHOT</kie.version>
+        <java.min.version>1.8</java.min.version>
+        <maven.min.version>3.2.3</maven.min.version>
         <version.wildfly>9.0.0.Beta2</version.wildfly>
+        <github.global.server>github</github.global.server>
     </properties>
     
      
@@ -85,7 +86,16 @@
         </pluginRepository>
     </pluginRepositories>
     
+    <distributionManagement>
+        <repository>
+            <id>internal.repo</id>
+            <name>Temporary Staging Repository</name>
+            <url>file://${project.build.directory}/mvn-repo</url>
+        </repository>
+    </distributionManagement>
+    
     <build>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -95,6 +105,44 @@
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.2</version>
+                <configuration>
+                    <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+                <version>0.11</version>
+                <configuration>
+                    <merge>true</merge>
+                    <message>Maven artifacts for ${project.version}</message>  <!-- git commit message -->
+                    <noJekyll>true</noJekyll>                                  <!-- disable webpage processing -->
+                    <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory> <!-- matches distribution management repository url above -->
+                    <branch>refs/heads/mvn-repo</branch>                       <!-- remote branch name -->
+                    <includes>
+                        <include>**/*</include>
+                    </includes>
+                    <excludes>
+                        <exclude>codebase-user-core/</exclude>
+                        <exclude>codebase-user-web/</exclude>
+                        <exclude>codebase-user-services/</exclude>
+                    </excludes>
+                    <repositoryName>codebase</repositoryName>      <!-- github repo name -->
+                    <repositoryOwner>salaboy</repositoryOwner>    <!-- github username  -->
+                </configuration>
+                <executions>
+                    <!-- run site-maven-plugin's 'site' target as part of the build's normal 'deploy' phase -->
+                    <execution>
+                        <goals>
+                            <goal>site</goal>
+                        </goals>
+                        <phase>deploy</phase>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
