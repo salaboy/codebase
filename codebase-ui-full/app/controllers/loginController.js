@@ -6,9 +6,6 @@
 
         $scope.loginUser = function (isValid, user) {
 
-
-            $scope.submitted = true;
-
             if (isValid) {
 
                 $users.login(user).success(function (data) {
@@ -18,9 +15,7 @@
                 }).error(function (data) {
                     console.log("Error: " + data.error);
                 });
-
-
-
+                
             }
         };
     }
