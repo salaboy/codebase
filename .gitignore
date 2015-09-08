@@ -26,3 +26,5 @@ hs_err_pid*
 /kie-server-docker/target/
 /kie-server-docker-build/target/
 /target/
+/codebase-kie-tests/nbproject/
+/codebase-kie-tests/target/
