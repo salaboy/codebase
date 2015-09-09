@@ -14,8 +14,20 @@ var lrserver = require('tiny-lr')();
 var express = require('express');
 var livereload = require('connect-livereload');
 var mainBowerFiles = require('main-bower-files');
+var path = require('path');
+var less = require('gulp-less');
 var livereloadport = 35729;
 var serverport = 5000;
+
+
+gulp.task('less', function () {
+  return gulp.src('./app/styles/less/app.less')
+    .pipe(less({
+      paths: [ path.join(__dirname, 'less', 'includes') ]
+    }))
+    .pipe(gulp.dest('dist/css'));
+});
+
 
 // JSHint task
 gulp.task('lint', function () {
@@ -118,6 +130,6 @@ function notifyLiveReload(event) {
 }
 
 // Dev task
-gulp.task('default', ['browserify', 'views', 'bower-files','express', 'livereload', 'watch'], function () {
+gulp.task('default', ['browserify', 'views', 'less', 'bower-files','express', 'livereload', 'watch'], function () {
      
 });
