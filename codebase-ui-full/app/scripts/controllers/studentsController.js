@@ -1,14 +1,15 @@
+"use strict";
 (function () {
     
 
-    var studentsController = function ($scope, $rootScope, $location, $routeParams, $teachers, $students, $groups) {
+    var studentsController = function ($scope, $rootScope, $location, $routeParams, $students, $util) {
         $scope.userType = $rootScope.usertype;
         $scope.urlparams = $routeParams;
         $scope.students = $students.getAllStudents();
  
         //ADD TEACHER FORM
         $scope.addSubmitted = false;
-        $scope.addStudent = function (isValid, teacher) {
+        $scope.addStudent = function (isValid) {
 
             $scope.addSubmitted = true;
 
@@ -18,12 +19,12 @@
         };
             
         //CHECK URL PARAMETERS
-        if (!isEmpty($scope.urlparams)) {
+        if (!$util.isEmpty($scope.urlparams)) {
             $scope.currentStudent = $scope.students[$scope.urlparams.id];
         }
         
         //UPDATE TEACHER
-        $scope.updateStudent = function (isValid, teacher) {
+        $scope.updateStudent = function (isValid) {
 
             $scope.updateSubmitted = true;
 
@@ -31,9 +32,9 @@
                 $location.path("/students");
             }
         };
-    }
-    
-    studentsController.$inject = ['$scope', '$rootScope', '$location', '$routeParams', '$teachers', '$students', '$groups'];
-    angular.module( "codebase" ).controller("studentsController", studentsController);
+    };
+    module.exports = studentsController;
+//    studentsController.$inject = ['$scope', '$rootScope', '$location', '$routeParams', '$students', '$util'];
+//    angular.module( "codebase" ).controller("studentsController", studentsController);
     
 }());

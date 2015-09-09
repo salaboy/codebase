@@ -1,7 +1,8 @@
+"use strict";
 (function () {
     
 
-    var teachersController = function ($scope, $rootScope, $location, $routeParams, $teachers, $students, $groups) {
+    var teachersController = function ($scope, $rootScope, $location, $routeParams, $teachers, $students, $groups, $util) {
         $scope.userType = $rootScope.usertype;
         $scope.urlparams = $routeParams;
         $scope.teachers = $teachers.getAllTeachers();
@@ -9,7 +10,7 @@
         
         //ADD TEACHER FORM
         $scope.addSubmitted = false;
-        $scope.addTeacher = function (isValid, teacher) {
+        $scope.addTeacher = function (isValid) {
 
             $scope.addSubmitted = true;
 
@@ -19,12 +20,12 @@
         };
             
         //CHECK URL PARAMETERS
-        if (!isEmpty($scope.urlparams)) {
+        if (!$util.isEmpty($scope.urlparams)) {
             $scope.currentUser = $scope.teachers[$scope.urlparams.id];
         }
         
         //UPDATE TEACHER
-        $scope.updateTeacher = function (isValid, teacher) {
+        $scope.updateTeacher = function (isValid) {
 
             $scope.updateSubmitted = true;
 
@@ -32,9 +33,9 @@
                 $location.path("/teachers");
             }
         };
-    }
-    
-    teachersController.$inject = ['$scope', '$rootScope', '$location', '$routeParams', '$teachers', '$students', '$groups'];
-    angular.module( "codebase" ).controller("teachersController", teachersController);
+    };
+       module.exports = teachersController;
+//    teachersController.$inject = ['$scope', '$rootScope', '$location', '$routeParams', '$teachers', '$students', '$groups', '$util'];
+//    angular.module( "codebase" ).controller("teachersController", teachersController);
     
 }());

@@ -1,7 +1,26 @@
-(function(){
+"use strict";
+(function () {
 
-    var $transformRequestToForm = function(){
+    var $util = function () {
         var factory = {};
+
+        factory.isEmpty = function (obj) {
+            if (obj === null) {
+                return true;
+            }
+            if (obj.length > 0) {
+                return false;
+            }
+            if (obj.length === 0) {
+                return true;
+            }
+            for (var key in obj) {
+                if (Object.prototype.hasOwnProperty.call(obj, key)) {
+                    return false;
+                }
+            }
+            return true;
+        };
         
         factory.transformRequest = function(obj){
             var str = [];
@@ -19,12 +38,14 @@
                 }
             }
             return str.join("&");
-        }
+        };
+        
         return factory;
     };
-      
-    angular.module("codebase").factory("$transformRequestToForm", $transformRequestToForm);
-    
+
+    //angular.module("codebase").factory("$util", $util);
+    module.exports = $util;
+
 }());
 
 

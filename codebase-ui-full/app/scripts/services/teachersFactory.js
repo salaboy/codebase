@@ -1,5 +1,6 @@
+"use strict";
 (function () {
-    var $teachers = function ($http) {
+    var $teachers = function () {
         var factory = {};
         //GET TEACHERS
         factory.getAllTeachers = function () {
@@ -7,21 +8,21 @@
            
            return allteachers;
            
-        }
+        };
         //GET TEACHER
-        factory.getTeacher = function (id) {
+        factory.getTeacher = function () {
            
-        }
+        };
         //UPDATE TEACHER
-        factory.updateTeacher = function (data) {
+        factory.updateTeacher = function () {
            
         };
         //NEW TEACHER
-        factory.newTeacher = function (data) {
+        factory.newTeacher = function () {
            
         };
         //DELETE TEACHER
-        factory.deleteTeacher = function (id) {
+        factory.deleteTeacher = function () {
          
         };
         
@@ -29,6 +30,7 @@
     };
 
     $teachers.$inject = ['$http'];
-    angular.module("codebase").factory("$teachers", $teachers);
+    module.exports = $teachers;
+    //angular.module("codebase").factory("$teachers", $teachers);
 
 }());

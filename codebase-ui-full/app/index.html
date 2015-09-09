@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>New Trends Reports</title>
+        <title>Codebase</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styles/css/app.css">
@@ -15,7 +15,7 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         
-        <div id="main-nav" ng-if="logged" ng-controller="navigationController">
+        <div id="main-nav" ng-if="logged" ng-controller="navController">
            <div ng-include="'views/nav.html'" > </div>
         </div>
         <div ng-view >
@@ -23,13 +23,15 @@
         </div>
         
         <!-- APP SCRIPTS -->
-        <script src="bower_components/jquery/dist/jquery.min.js"></script>
-        <script src="bower_components/angular/angular.js"></script>
-        <script src="bower_components/angular-animate/angular-animate.min.js"></script>
-        <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
-        <script src="bower_components/angular-route/angular-route.js"></script>    
-        <!-- APP JS -->
-        <script type="text/javascript" src="dist/codebase.min.js"></script>
+        <script src="lib/jquery.js"></script>
+        <script src="lib/angular.js"></script>
+        <script src="lib/angular-animate.js"></script>
+        <script src="lib/angular-cookies.js"></script>
+        <script src="lib/angular-route.js"></script> 
+        
+
+       <!-- APP JS -->
+        <script src="/js/bundle.js"></script>
         
 
 

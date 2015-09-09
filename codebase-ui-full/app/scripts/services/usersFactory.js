@@ -1,5 +1,6 @@
+"use strict";
 (function () {
-    var $users = function ($http, $cookieStore, $transformRequestToForm, appConstants) {
+    var $users = function ($http, $cookieStore, $util, appConstants) {
         var factory = {};
         //SIGNUP
         factory.create = function (email, password, firstname, lastname, gender, birthday) {
@@ -7,11 +8,11 @@
                 method: 'POST',
                 url: appConstants.server + appConstants.context + 'rest/auth/create',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                transformRequest: $transformRequestToForm.transformRequest,
+                transformRequest: $util.transformRequest,
                 data: {email: email, password: password, firstname: firstname, 
                     lastname: lastname, gender: gender, birthday: birthday}
-            })
-        }
+            });
+        };
         //LOGOUT
         factory.logout = function () {
             return $http({
@@ -26,7 +27,7 @@
                 method: 'POST',
                 url: appConstants.server + appConstants.context + 'rest/auth/login',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                transformRequest: $transformRequestToForm.transformRequest,
+                transformRequest: $util.transformRequest,
                 data: {email: user.email, password: user.password}
             });
         };
@@ -34,7 +35,8 @@
         return factory;
     };
 
-    $users.$inject = ['$http', '$cookieStore', '$transformRequestToForm', 'appConstants'];
-    angular.module("codebase").factory("$users", $users);
+    $users.$inject = ['$http', '$cookieStore', '$util', 'appConstants'];
+   // angular.module("codebase").factory("$users", $users);
+    module.exports = $users;
 
 }());
