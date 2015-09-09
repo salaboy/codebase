@@ -21,11 +21,11 @@ var serverport = 5000;
 
 
 gulp.task('less', function () {
-  return gulp.src('./app/styles/less/app.less')
-    .pipe(less({
-      paths: [ path.join(__dirname, 'less', 'includes') ]
-    }))
-    .pipe(gulp.dest('dist/css'));
+    return gulp.src('./app/styles/less/app.less')
+            .pipe(less({
+                paths: [path.join(__dirname, 'less', 'includes')]
+            }))
+            .pipe(gulp.dest('dist/css'));
 });
 
 
@@ -45,8 +45,8 @@ gulp.task('bower-files', function () {
             // grab vendor js files from bower_components, minify and push in /public
             .pipe(jsFilter)
             .pipe(gulp.dest('dist/lib/'))
-    
-           // .pipe(uglify())
+
+            // .pipe(uglify())
 //            .pipe(rename({
 //                suffix: ".min"
 //            }))
@@ -77,7 +77,7 @@ gulp.task('browserify', function () {
                 insertGlobals: true,
                 debug: true
             }))
-          //  .pipe(uglify())
+            //  .pipe(uglify())
             // Bundle to a single file
             .pipe(concat('bundle.js'))
             // Output it to our dist folder
@@ -90,8 +90,9 @@ gulp.task('watch', ['lint'], function () {
         'lint',
         'browserify'
     ]);
-      gulp.watch(['app/index.html', 'app/views/**/*.html'], notifyLiveReload);
-    gulp.watch('css/*.css', notifyLiveReload);
+    gulp.watch(['app/index.html', 'app/views/**/*.html'], ['views'], notifyLiveReload);
+    
+    gulp.watch('app/styles/less/**/*.less', ['less'], notifyLiveReload);
 });
 
 gulp.task('views', function () {
@@ -105,31 +106,31 @@ gulp.task('views', function () {
 
 
 
-gulp.task('express', function() {
-  var express = require('express');
-  var app = express();
-  app.use(require('connect-livereload')({port: 35729}));
-  app.use(express.static('dist/'));
-  app.listen(5000, '0.0.0.0');
+gulp.task('express', function () {
+    var express = require('express');
+    var app = express();
+    app.use(require('connect-livereload')({port: 35729}));
+    app.use(express.static('dist/'));
+    app.listen(5000, '0.0.0.0');
 });
 
 var tinylr;
-gulp.task('livereload', function() {
-  tinylr = require('tiny-lr')();
+gulp.task('livereload', function () {
+    tinylr = require('tiny-lr')();
     tinylr.listen(35729);
 });
 
 function notifyLiveReload(event) {
-  var fileName = require('path').relative('dist/', event.path);
+    var fileName = require('path').relative('dist/', event.path);
 
-  tinylr.changed({
-    body: {
-      files: [fileName]
-    }
-  });
+    tinylr.changed({
+        body: {
+            files: [fileName]
+        }
+    });
 }
 
 // Dev task
-gulp.task('default', ['browserify', 'views', 'less', 'bower-files','express', 'livereload', 'watch'], function () {
-     
+gulp.task('default', ['browserify', 'views', 'less', 'bower-files', 'express', 'livereload', 'watch'], function () {
+
 });
