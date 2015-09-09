@@ -1,0 +1,21 @@
+// main: app.less
+
+//LAYOUT
+.center {
+    margin: 0 auto;
+}
+.fl(@side: left) {
+    float: @side;
+}
+
+//TEXT
+.textAlign(@pos: left){
+    text-align: @pos;
+}
+
+//EFFECTS
+.box-shadow(@size, @blur) {
+  -webkit-box-shadow: 0 @size @blur rgba(0,0,0,.3);
+  -moz-box-shadow: 0 @size @blur rgba(0,0,0,.3);
+  box-shadow: 0 @size @blur rgba(0,0,0,.3);
+}

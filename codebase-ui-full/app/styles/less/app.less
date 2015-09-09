@@ -1,2 +1,22 @@
 // out: ../css/app.css, compress: true, strictMath: true, autoprefixer:true
 
+@import "variables.less";
+@import "mixins.less";
+
+
+body, html {
+    position: relative;
+    font-family: @text;
+    background-color: @grayLight;
+    font-size: @fontSize;
+    line-height: @lineHeight;
+    color: @grayDark;
+    
+}
+
+//ELEMENTS
+@import "elements/layout.less";
+@import "elements/links.less";
+@import "elements/blocks.less";
+@import "elements/forms.less";
+//SCREENS

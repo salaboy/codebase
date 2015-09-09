@@ -1,13 +1,35 @@
-<form novalidate name="loginForm" ng-submit="loginUser(loginForm.$valid, credentials)">
+<div class="container small">
+    <h1>New Trends Reports</h1>
+    <div class="block">
+        <form novalidate name="loginForm" ng-submit="loginUser(loginForm.$valid, userdata)" class="form">
+             <fieldset>
+                 <legend>Log in</legend>
 
-     <div class="control">
-         <input ng-model="credentials.email" id="email" name="email" type="email" placeholder="Email" required>
-         <div class="error-msg" ng-show="loginForm.email.$invalid && submitted">Enter a valid email.</div>
-     </div>
-     <div class="control full">
-         <input ng-model="credentials.password" type="password" id="pass" name="password" placeholder="Password" required>
-     </div>
+                 <div class="field">
+                     <label class="field-label" for="email">Email</label>
+                     <input class="field-input email" id="email" type="email" ng-model="userdata.email" name="userEmail" required="" />
+                     <div class="field-message" ng-show="loginForm.$submitted || loginForm.userEmail.$touched">
+                         <div class="field-message-info" ng-show="loginForm.userEmail.$error.required">Enter your email.</div>
+                         <div class="field-message-error" ng-show="loginForm.userEmail.$error.email">This is not a valid email.</div>
+                     </div>
+                 </div>
 
-     <button  type="submit" value="Login" class="button block">Sign In</button>
+                 <div class="field">
 
- </form>
+                     <label class="field-label" for="pass">Password</label>
+                     <input class="field-input pass" id="pass" type="password" ng-model="userdata.password" name="userPass" required="" />
+                     <div class="field-message" ng-show="loginForm.$submitted || loginForm.userPass.$touched">
+                         <div ng-show="loginForm.userPass.$error.required">Enter your password.</div>
+                     </div>
+
+                 </div>
+
+             </fieldset>
+
+             <button  type="submit" value="Login" class="button">Sign In</button>
+
+        </form>
+    
+    </div>
+
+</div>
