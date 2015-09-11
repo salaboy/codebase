@@ -147,7 +147,7 @@
 
                         <!-- KIE Server latest SNAPSHOT & Wildfly 8.1.0.Final. -->
                         <image>
-                            <name>org.codebase/kie-server-xx</name>
+                            <name>salaboy/codebase-kie-server</name>
                             <alias>kie-server-codebase</alias>
                             <build>
                                 <assembly>

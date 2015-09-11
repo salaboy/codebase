@@ -4,16 +4,16 @@ import org.codebase.model.user.User;
 
 rule "Invalid User firstname"
     when
-        User(firstname = null)
+        User(firstname == null)
     then
-        System.out.println("Invalid user firstname")
+        System.out.println("Invalid user firstname");
 end
 
 rule "Invalid User lastname"
     when
-        User(lastname = null)
+        User(lastname == null)
     then
-        System.out.println("Invalid user lastname")
+        System.out.println("Invalid user lastname");
 end
 
 

@@ -1,6 +1,6 @@
 'use strict';
 (function () {
-    var angular = require('angular');
+    
     var mainController = require('./controllers/mainController');
     var groupsController = require('./controllers/groupsController');
     var loginController = require('./controllers/loginController');

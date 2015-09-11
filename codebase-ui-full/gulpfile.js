@@ -5,6 +5,7 @@ var uglify = require('gulp-uglify');
 var minifycss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var concat = require('gulp-concat');
+var inject = require('gulp-inject');
 var es = require('event-stream');
 var jshint = require('gulp-jshint');
 var browserify = require('gulp-browserify');
@@ -14,19 +15,17 @@ var lrserver = require('tiny-lr')();
 var express = require('express');
 var livereload = require('connect-livereload');
 var mainBowerFiles = require('main-bower-files');
+var stylus = require('gulp-stylus');
 var path = require('path');
 var less = require('gulp-less');
+var angularFilesort = require('gulp-angular-filesort');
+var del = require('del');
+var runSequence = require('run-sequence');
+var plumber = require('gulp-plumber');
 var livereloadport = 35729;
 var serverport = 5000;
 
 
-gulp.task('less', function () {
-    return gulp.src('./app/styles/less/app.less')
-            .pipe(less({
-                paths: [path.join(__dirname, 'less', 'includes')]
-            }))
-            .pipe(gulp.dest('dist/css'));
-});
 
 
 // JSHint task
@@ -37,15 +36,27 @@ gulp.task('lint', function () {
             .pipe(jshint.reporter('default'));
 });
 
+gulp.task('less', function () {
+    return gulp.src('./app/styles/less/app.less')
+            .pipe(less({
+                paths: [path.join(__dirname, 'less', 'includes')]
+            }))
+            .pipe(gulp.dest('dist/css'));
+});
+
 gulp.task('bower-files', function () {
     var jsFilter = gulpFilter('*.js', {restore: true});
     var cssFilter = gulpFilter('*.css', {restore: true});
     var fontFilter = gulpFilter(['*.eot', '*.woff', '*.svg', '*.ttf'], {restore: true});
+
     return gulp.src(mainBowerFiles())
+
+
             // grab vendor js files from bower_components, minify and push in /public
             .pipe(jsFilter)
+            .pipe(concat('thirdparty.js'))
             .pipe(gulp.dest('dist/lib/'))
-
+            
             // .pipe(uglify())
 //            .pipe(rename({
 //                suffix: ".min"
@@ -55,44 +66,21 @@ gulp.task('bower-files', function () {
 
             // grab vendor css files from bower_components, minify and push in /public
             .pipe(cssFilter)
-            .pipe(gulp.dest('dist/css'))
-            .pipe(minifycss())
-            .pipe(rename({
-                suffix: ".min"
-            }))
-            .pipe(gulp.dest('dist/css'))
-            .pipe(cssFilter.restore)
+            .pipe(concat('thirdparty.css'))
+            //.pipe(gulp.dest('dist/css/'))
+            //  .pipe(minifycss())
+//            .pipe(rename({
+//                suffix: ".min"
+//            }))
+            .pipe(gulp.dest('dist/css/'))
+            .pipe(cssFilter.restore);
 
-            // grab vendor font files from bower_components and push in /public
-            .pipe(fontFilter)
-            .pipe(flatten())
-            .pipe(gulp.dest('dist/fonts'));
-});
+    // grab vendor font files from bower_components and push in /public
+//            .pipe(fontFilter)
+//            .pipe(flatten())
+//            .pipe(gulp.dest('dist/fonts'));
 
-// Browserify task
-gulp.task('browserify', function () {
-    // Single point of entry (make sure not to src ALL your files, browserify will figure it out for you)
-    return gulp.src(['app/scripts/app.js'])
-            .pipe(browserify({
-                insertGlobals: true,
-                debug: true
-            }))
-            //  .pipe(uglify())
-            // Bundle to a single file
-            .pipe(concat('bundle.js'))
-            // Output it to our dist folder
-            .pipe(gulp.dest('dist/js'));
-});
 
-gulp.task('watch', ['lint'], function () {
-    // Watch our scripts
-    gulp.watch(['app/scripts/*.js', 'app/scripts/**/*.js'], [
-        'lint',
-        'browserify'
-    ]);
-    gulp.watch(['app/index.html', 'app/views/**/*.html'], ['views'], notifyLiveReload);
-    
-    gulp.watch('app/styles/less/**/*.less', ['less'], notifyLiveReload);
 });
 
 gulp.task('views', function () {
@@ -105,12 +93,57 @@ gulp.task('views', function () {
 });
 
 
+// Browserify task
+gulp.task('browserify', function () {
+    // Single point of entry (make sure not to src ALL your files, browserify will figure it out for you)
+    return gulp.src(['app/scripts/app.js'])
+            .pipe(angularFilesort())
+            .pipe(browserify({
+                insertGlobals: true,
+                debug: true
+            }))
+
+            //  .pipe(uglify())
+            // Bundle to a single file
+            .pipe(concat('bundle.js'))
+            // Output it to our dist folder
+            .pipe(gulp.dest('dist/js'));
+});
+
+gulp.task('inject', function () {
+    var cssFiles = gulp.src('dist/css/*.css')
+            .pipe(stylus())
+            .pipe(gulp.dest('dist/css/'));
+
+    return gulp.src('dist/index.html')
+            .pipe(inject(gulp.src('dist/lib/*.js', {read: false}), {name: 'libs', ignorePath: 'dist/', relative: true}))
+            .pipe(inject(es.merge(
+                    cssFiles,
+                    gulp.src('dist/js/*.js', {read: false})
+                    ), {ignorePath: 'dist/', relative: true}))
+            .pipe(gulp.dest('dist/'));
+
+});
+
+gulp.task('watch', ['lint'], function () {
+    // Watch our scripts
+    gulp.watch(['app/scripts/*.js', 'app/scripts/**/*.js'], [
+        'lint',
+        'browserify', 
+        'inject'
+    ]);
+    gulp.watch(['app/index.html', 'app/views/**/*.html'], ['views', 'inject'], notifyLiveReload);
+
+    gulp.watch('app/styles/less/**/*.less', ['less', 'inject'], notifyLiveReload);
+});
+
 
 gulp.task('express', function () {
     var express = require('express');
     var app = express();
     app.use(require('connect-livereload')({port: 35729}));
     app.use(express.static('dist/'));
+
     app.listen(5000, '0.0.0.0');
 });
 
@@ -130,7 +163,28 @@ function notifyLiveReload(event) {
     });
 }
 
+gulp.task('clean', function () {
+    return del([
+        'dist/'
+    ]);
+});
+
+
+
 // Dev task
-gulp.task('default', ['browserify', 'views', 'less', 'bower-files', 'express', 'livereload', 'watch'], function () {
+gulp.task('build', function (callback) {
+    runSequence(
+            'clean', 'views', 'browserify', 'less', 'bower-files', 'inject',
+            function (error) {
+                if (error) {
+                    console.log(error.message);
+                } else {
+                    console.log('RELEASE FINISHED SUCCESSFULLY');
+                }
+                callback(error);
+            });
+});
+
+gulp.task('default', ['build', 'express', 'livereload', 'watch'], function () {
 
 });
