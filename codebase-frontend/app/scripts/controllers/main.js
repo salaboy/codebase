@@ -8,9 +8,6 @@
  * Controller of the codebaseFrontendApp
  */
 angular.module('codebaseFrontendApp')
-  .controller('MainCtrl', ['$scope', 'rest', 'register', function($scope, rest, register) {
-    $scope.greeting = rest.testall();
-    $scope.reg = register.testall();
-
- 
+  .controller('MainCtrl', ['$scope', '$rootScope',  'register', function($scope, $rootScope, register) {
+    register.login('facebook');
 }]);

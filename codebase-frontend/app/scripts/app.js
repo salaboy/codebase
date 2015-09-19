@@ -37,8 +37,6 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       });
-  }).run(function ($log, hello) {
-        hello.on("auth.login", function (r) {
-            $log.log(r.authResponse);
-    });
+  }).run(function ($log, register) {
+
 });

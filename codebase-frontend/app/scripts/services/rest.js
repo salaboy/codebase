@@ -11,19 +11,19 @@ angular.module('codebaseFrontendApp')
   .factory('rest', ['$http', function($http) {
 
     var urlBase = '/api/';
-    var dataFactory = {};
+    var restFactory = {};
 
-    dataFactory.get = function (ext) {
+    restFactory.get = function (ext) {
         return $http.get(urlBase + '/' + ext);
     };
 
-    dataFactory.post = function (ext, data) {
+    restFactory.post = function (ext, data) {
         return $http.post(urlBase + '/' + ext, data);
     };
       
-    dataFactory.testall = function () {
+    restFactory.testall = function () {
         return 'test path';
     };
 
-    return dataFactory;
+    return restFactory;
 }]);
