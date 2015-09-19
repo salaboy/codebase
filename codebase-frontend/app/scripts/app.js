@@ -16,24 +16,28 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ngHello' 
+    'ngHello',
+    'ui.router'
   ])
-  .config(function ($routeProvider, helloProvider) {
-  
+  .config(function ($stateProvider, $urlRouterProvider, helloProvider) {
     helloProvider.init({
-        twitter: 'KEY'
+        twitter: 'myTwitterToken'
     });
-    
-    $routeProvider
-      .when('/', {
+
+    $urlRouterProvider.otherwise("/");
+    $stateProvider
+      .state('home', {
+        url:'/',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/about', {
+      .state('about', {
+        url:'/about',
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
       });
-  });
+  }).run(function ($log, hello) {
+        hello.on("auth.login", function (r) {
+            $log.log(r.authResponse);
+    });
+});

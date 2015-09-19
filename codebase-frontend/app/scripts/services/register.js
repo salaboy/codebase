@@ -8,7 +8,7 @@
  * Factory in the codebaseFrontendApp.
  */
 angular.module('codebaseFrontendApp')
-    .factory('register', ['$http', function($http, hello) {
+    .factory('register', ['$http', 'hello', function($http, hello) {
         
         var restFactory = {};
 
@@ -17,16 +17,18 @@ angular.module('codebaseFrontendApp')
         };
 
         restFactory.login = function () {
+             hello('twitter').login();
+        };
+
+        restFactory.testall = function () {
             hello('facebook').login().then(function() {
                 alert('You are signed in to Facebook');
             }, function(e) {
                 alert('Signin error: ' + e.error.message);
             });
-        };
-
-        restFactory.testall = function () {
             return 'Register';
         };
+
 
     return restFactory;
 }]);
