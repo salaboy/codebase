@@ -21,8 +21,9 @@ angular
   ])
   .config(function ($stateProvider, $urlRouterProvider, helloProvider) {
     helloProvider.init({
-        twitter: 'myTwitterToken'
+        facebook:'163194807355490'
     });
+    
 
     $urlRouterProvider.otherwise("/");
     $stateProvider
