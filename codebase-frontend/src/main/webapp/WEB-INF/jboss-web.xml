@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <jboss-web> 
-    <context-root></context-root>
+    <context-root>/codebase/</context-root>
     <!--security-domain>security-quickstart</security-domain>
     <disable-audit>true</disable-audit-->
     <!--security-domain>java:/jaas/security-quickstart</security-domain--> 

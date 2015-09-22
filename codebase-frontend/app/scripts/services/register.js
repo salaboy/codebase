@@ -19,17 +19,18 @@ angular.module('codebaseFrontendApp')
         registerFactory.post = function (network, data) {
           hello.api(network+':/me/share', 'post', data, function(r){
 			if(!r||r.error){
-				alert("Whoops! "+r.error.message);
+				alert('Whoops! '+r.error.message);
 			}
 			else{
-				alert("Your message has been published to "+ network);
+				alert('Your message has been published to '+ network);
 			}
 		  });
         };
         
         registerFactory.login = function (network) {
-          hello(network).login().then(function(r) {
+          hello(network).login().then(function() {
                 //get network
+                
             }, function(e) {
                 alert('Signin error: ' + e.error.message);
             });
@@ -42,7 +43,7 @@ angular.module('codebaseFrontendApp')
             });
         };
         
-        registerFactory.register = function (network) {
+        registerFactory.register = function () {
           //api post to server
         };
         

@@ -25,7 +25,7 @@ angular
     });
     
 
-    $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise('/');
     $stateProvider
       .state('home', {
         url:'/',
@@ -37,6 +37,6 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       });
-  }).run(function ($log, register) {
+  }).run(function () {
 
 });
