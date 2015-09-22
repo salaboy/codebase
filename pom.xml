@@ -15,12 +15,13 @@
         <module>codebase-user-model</module>
         <module>codebase-user-core</module>
         <module>codebase-user-services</module>
-        <module>codebase-user-web</module>
-        <module>codebase-ui-full</module>
+<!--        <module>codebase-user-web</module>
+        <module>codebase-ui-full</module>-->
         <module>codebase-kie</module>
         <module>kie-server-docker</module>
         <module>kie-server-docker-build</module>
         <module>codebase-kie-tests</module>
+        <module>codebase-frontend</module>
     </modules>
   
     <properties>

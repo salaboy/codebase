@@ -27,3 +27,5 @@ hs_err_pid*
 /target/
 /codebase-kie-tests/nbproject/
 /codebase-kie-tests/target/
+/codebase-frontend/nbproject/
+/codebase-frontend/target/
