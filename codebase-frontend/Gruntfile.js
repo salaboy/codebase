@@ -26,6 +26,19 @@ module.exports = function (grunt) {
 
     // Project settings
     yeoman: appConfig,
+      
+    less: {
+      development: {
+        options: {
+          compress: true,
+          yuicompress: true,
+          optimization: 2
+        },
+        files: {
+          "css/main.css": "less/main.less" // destination file and source file
+        }
+      }
+    }
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
@@ -47,7 +60,14 @@ module.exports = function (grunt) {
       compass: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
         tasks: ['compass:server', 'autoprefixer']
-      },
+      }, 
+      styles: {
+        files: ['less/**/*.less'], // which files to watch
+        tasks: ['less'],
+        options: {
+          nospawn: true
+        }
+      }
       gruntfile: {
         files: ['Gruntfile.js']
       },
