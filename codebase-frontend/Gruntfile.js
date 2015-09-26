@@ -11,7 +11,7 @@ module.exports = function (grunt) {
 
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
-
+ 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
@@ -35,10 +35,10 @@ module.exports = function (grunt) {
           optimization: 2
         },
         files: {
-          "css/main.css": "less/main.less" // destination file and source file
+          'app/styles/style.css': '<%= yeoman.app %>/styles/less/{,*/}*.less'// destination file and source file
         }
       }
-    }
+    },  
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
@@ -58,7 +58,7 @@ module.exports = function (grunt) {
         tasks: ['newer:jshint:test', 'karma']
       },
       compass: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+        files: ['<%= yeoman.app %>/styles/{,*/}*.{less}'],
         tasks: ['compass:server', 'autoprefixer']
       }, 
       styles: {
@@ -67,7 +67,7 @@ module.exports = function (grunt) {
         options: {
           nospawn: true
         }
-      }
+      },
       gruntfile: {
         files: ['Gruntfile.js']
       },
@@ -421,15 +421,18 @@ module.exports = function (grunt) {
     // Run some tasks in parallel to speed up the build process
     concurrent: {
       server: [
-        'compass:server'
+        'compass:server',
+        'less'
       ],
       test: [
-        'compass'
+        'compass',
+        'less',
       ],
       dist: [
         'compass:dist',
         'imagemin',
-        'svgmin'
+        'svgmin',
+        'less'
       ]
     },
 
@@ -494,4 +497,6 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+ grunt.loadNpmTasks('grunt-contrib-less');
 };
