@@ -58,11 +58,11 @@ module.exports = function (grunt) {
         tasks: ['newer:jshint:test', 'karma']
       },
       compass: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.{less}'],
+        files: ['<%= yeoman.app %>/styles/less/{,*/}*.{less}'],
         tasks: ['compass:server', 'autoprefixer']
       }, 
       styles: {
-        files: ['less/**/*.less'], // which files to watch
+        files: ['<%= yeoman.app %>/styles/less/*.less'], // which files to watch
         tasks: ['less'],
         options: {
           nospawn: true
