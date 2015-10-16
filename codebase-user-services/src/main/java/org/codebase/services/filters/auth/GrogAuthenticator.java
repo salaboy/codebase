@@ -15,9 +15,9 @@ import java.util.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import org.codebase.model.user.User;
-import org.codebase.core.user.api.UsersService;
 import org.codebase.core.exceptions.ServiceException;
 import org.codebase.core.util.CodebaseUtil;
+import org.codebase.core.user.api.UsersService;
 
 /**
  *
@@ -32,7 +32,7 @@ public class GrogAuthenticator {
     private Map<String, String> authorizationTokensStorage = new HashMap();
 
     @Inject
-    UsersService userService;
+    private UsersService userService;
 
     private static Logger log = Logger.getLogger(GrogAuthenticator.class.getName());
 

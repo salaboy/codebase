@@ -14,10 +14,10 @@ import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
 import javax.ws.rs.core.Response;
 import org.codebase.model.user.User;
-import org.codebase.core.user.api.UsersService;
 import org.codebase.services.endpoints.user.api.PublicUserEndpointService;
 import static org.codebase.services.endpoints.user.impl.UsersHelper.createFullJsonUser;
 import org.codebase.core.exceptions.ServiceException;
+import org.codebase.core.user.api.UsersService;
 
 /**
  *

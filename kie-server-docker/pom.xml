@@ -12,7 +12,7 @@
     <artifactId>kie-server-xx-docker</artifactId>
     
     <packaging>pom</packaging>
-    <name>Codebase :: KIE Execution Server Docker Image</name>
+    <name>CodeBase :: KIE Execution Server Docker Image</name>
 
     <build>
         <plugins>

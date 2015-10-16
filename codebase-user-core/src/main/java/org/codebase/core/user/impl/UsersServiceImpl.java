@@ -12,13 +12,14 @@ import java.util.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.NoResultException;
-import org.codebase.core.user.api.UsersService;
 import org.codebase.model.user.ServiceKey;
 import org.codebase.model.user.User;
 import org.codebase.core.exceptions.ServiceException;
 import org.codebase.core.util.CodebaseUtil;
 import org.codebase.core.util.PersistenceManager;
 import org.apache.commons.lang.StringUtils;
+import org.codebase.core.user.api.UsersService;
+
 
 /**
  *

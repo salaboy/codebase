@@ -8,7 +8,7 @@
     </parent>
     
     <artifactId>codebase-kie-tests</artifactId>
-    <name>Codebase :: Kie Tests</name>
+    <name>CodeBase :: Kie Tests</name>
     <packaging>jar</packaging>
    
     <dependencies>

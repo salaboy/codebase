@@ -10,20 +10,8 @@
 .DS_Store
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-/codebase-model/target/
-/codebase-core/target/
-/codebase-services/target/
-/codebase-user-web/target/
-/codebase-user-model/target/
-/codebase-user-core/target/
-/codebase-user-services/target/
-/codebase-ui-full/app/bower_components/
-/codebase-ui-full/nbproject/
-/codebase-ui-full/dist/
-/codebase-ui-full/target/
-/codebase-kie/target/
-/kie-server-docker/target/
-/kie-server-docker-build/target/
-/target/
-/codebase-kie-tests/nbproject/
-/codebase-kie-tests/target/
+target/
+bower_components/
+node_components/
+dist/
+nbproject/

@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 
-import org.codebase.core.user.api.UsersService;
 import org.codebase.core.exceptions.ServiceException;
 import org.codebase.model.user.User;
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -24,6 +23,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.codebase.core.user.api.UsersService;
 
 /**
  *

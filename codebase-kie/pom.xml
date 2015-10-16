@@ -9,7 +9,7 @@
     </parent>
     <artifactId>codebase-kie</artifactId>
     
-    <name>Codebase :: KIE Business Logic</name>
+    <name>CodeBase :: KIE Business Logic</name>
     
     <dependencies>
         <dependency>

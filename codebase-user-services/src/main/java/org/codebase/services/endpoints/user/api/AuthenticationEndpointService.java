@@ -9,7 +9,6 @@ import java.io.Serializable;
 import javax.ejb.Local;
 import javax.validation.constraints.NotNull;
 
-import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -19,8 +18,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.codebase.core.exceptions.ServiceException;
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
+import org.codebase.model.user.User;
 
 
 
@@ -33,26 +31,15 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Local
 public interface AuthenticationEndpointService extends Serializable {
 
-    
-    
     @POST
-    @Path("/create")
+    @Path("/new")
     @Produces({MediaType.APPLICATION_JSON})
-    public Response createUser(@NotEmpty @FormParam("firstname") String firstname, 
-            @NotEmpty  @FormParam("lastname") String lastname, 
-            @NotNull @Email @NotEmpty @FormParam("email") String email,
-            @NotNull @NotEmpty @FormParam("password") String password, 
-            @NotNull @NotEmpty @FormParam("gender") String gender, @FormParam("birthday") String birthday) throws ServiceException;
+    public Response createUser(@NotNull User user) throws ServiceException;
 
     @POST
     @Path("/login")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response login(
-            @Context HttpHeaders httpHeaders,
-            @NotNull @Email @NotEmpty @FormParam("email") String email,
-            @NotNull @NotEmpty @FormParam("password") String password) throws ServiceException;
-    
-
+    public Response login(@NotNull User user) throws ServiceException;
 
     @POST
     @Path("/logout")

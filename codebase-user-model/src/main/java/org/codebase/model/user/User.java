@@ -10,12 +10,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -37,6 +41,9 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity(name = "User")
 @Table(name = "USERS")
 @Indexed
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "USER_TYPE")
+@DiscriminatorValue(value = "PlatformUser")
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -79,7 +86,6 @@ public class User implements Serializable {
     private List<String> roles = new ArrayList<String>();
     
     
-
     public User() {
     }
 
@@ -186,7 +192,10 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", password=" + password + ", email=" + email + ", isFirstLogin=" + isFirstLogin + ", bio=" + bio + ", firstname=" + firstname + ", lastname=" + lastname + ", live=" + live + ", birthday=" + birthday + ", gender=" + gender + ", lastLogin=" + lastLogin + ", roles=" + roles + '}';
+        return "User{" + "id=" + id + ", password=" + password + ", email=" + email +
+                ", isFirstLogin=" + isFirstLogin + ", bio=" + bio + ", firstname=" + firstname + 
+                ", lastname=" + lastname + ", live=" + live + ", birthday=" + birthday + 
+                ", gender=" + gender + ", lastLogin=" + lastLogin + ", roles=" + roles + '}';
     }
 
 }

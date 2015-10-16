@@ -24,12 +24,12 @@ import javax.ws.rs.core.Response;
 
 import org.codebase.model.user.User;
 
-import org.codebase.core.user.api.UsersService;
 
 import org.codebase.services.endpoints.user.api.UserEndpointService;
 import static org.codebase.services.endpoints.user.impl.UsersHelper.createFullJsonUser;
 import org.codebase.core.exceptions.ServiceException;
 import org.codebase.core.user.api.UsersQueryService;
+import org.codebase.core.user.api.UsersService;
 
 /**
  *

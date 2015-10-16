@@ -23,11 +23,11 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
 
 import org.codebase.model.user.User;
-import org.codebase.core.user.api.UsersService;
 import org.codebase.services.endpoints.user.api.AuthenticationEndpointService;
 import org.codebase.core.exceptions.ServiceException;
 import org.codebase.services.filters.auth.GrogAuthenticator;
 import org.codebase.services.filters.auth.GrogHTTPHeaderNames;
+import org.codebase.core.user.api.UsersService;
 
 
 /**
@@ -54,16 +54,12 @@ public class AuthenticationEndpointServiceImpl implements AuthenticationEndpoint
     
 
     @Override
-    public Response createUser(String firstname, String lastname,
-            String email, String password, String gender, String birthday) throws ServiceException {
-        User user = new User(email, password);
-        user.setFirstname(firstname);
-        user.setLastname(lastname);
-        user.setGender(gender);
+    public Response createUser(User user) throws ServiceException {
+        
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         Date result = null;
         try {
-            result = df.parse(birthday);
+            result = df.parse(user.getBirthday().toString());
         } catch (ParseException ex) {
             ex.printStackTrace();
         }
@@ -73,23 +69,20 @@ public class AuthenticationEndpointServiceImpl implements AuthenticationEndpoint
     }
 
     @Override
-    public Response login(
-            HttpHeaders httpHeaders,
-            String email,
-            String password) throws ServiceException {
+    public Response login(User user) throws ServiceException {
 
-        User authUser = userService.getByEmail(email);
+        User authUser = userService.getByEmail(user.getEmail());
 
         if (authUser == null) {
             return getNoCacheResponseBuilder(Response.Status.UNAUTHORIZED).build();
         }
 
-        String authToken = authenticator.login(email, password);
+        String authToken = authenticator.login(authUser.getEmail(), authUser.getPassword());
 
         boolean firstLogin = authUser.isIsFirstLogin();
         boolean live = authUser.isLive();
         JsonObjectBuilder jsonObjBuilder = Json.createObjectBuilder();
-        jsonObjBuilder.add("email", email);
+        jsonObjBuilder.add("email", authUser.getEmail());
         jsonObjBuilder.add("auth_token", authToken);
         jsonObjBuilder.add("user_id", authUser.getId());
         jsonObjBuilder.add("firstLogin", firstLogin);

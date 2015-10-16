@@ -8,7 +8,7 @@
     </parent>
     <artifactId>kie-server-xx-docker-build</artifactId>
     <packaging>pom</packaging>
-    <name>Codename :: KIE Execution Server Maven Docker Build</name>
+    <name>CodeBase :: KIE Execution Server Maven Docker Build</name>
 
     <properties>
         <kie.docker.kie-server.jee7.artifactId>kie-server</kie.docker.kie-server.jee7.artifactId>
