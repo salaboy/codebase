@@ -1,0 +1,29 @@
+package rules;
+
+import org.codebase.model.user.User;
+import org.codebase.model.school.*;
+import org.codebase.model.school.users.*;
+
+rule "Invalid User firstname"
+    when
+        User(firstname == null)
+    then
+        System.out.println("Invalid user firstname");
+end
+
+rule "Invalid User lastname"
+    when
+        User(lastname == null)
+    then
+        System.out.println("Invalid user lastname");
+end
+
+
+rule "Just print user roles"
+    when
+        $u: User()
+        $r: String() from $u.getRoles()
+    then
+        System.out.println(">>> User Role: "+ $r);
+end
+

@@ -49,7 +49,7 @@ public class KieContainerMavenTests {
             });
         });
 
-        KieSession newKieSession = kContainer.newKieSession();
+        KieSession newKieSession = kContainer.newKieSession("SimpleKS");
         assertNotNull(newKieSession);
 
         newKieSession.insert(new User());

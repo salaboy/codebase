@@ -1,6 +1,8 @@
 package rules;
 
 import org.codebase.model.user.User;
+import org.codebase.model.school.*;
+import org.codebase.model.school.users.*;
 
 rule "Invalid User firstname"
     when
@@ -24,3 +26,4 @@ rule "Just print user roles"
     then
         System.out.println(">>> User Role: "+ $r);
 end
+

@@ -21,7 +21,7 @@
 	<module>codebase-school-services</module>
 
         <module>codebase-user-web</module>
-        <module>codebase-ui-full</module>
+        <module>codebase-frontend</module>
 
 
         <module>codebase-kie</module>
