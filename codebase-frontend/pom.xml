@@ -49,6 +49,7 @@
                 <artifactId>grunt-maven-plugin</artifactId>
                 <version>1.4.1</version>
 		<configuration>
+                  <jsSourceDirectory>static</jsSourceDirectory>
 	          <gruntOptions>
                     <gruntOption>--force</gruntOption>
                   </gruntOptions>
@@ -56,7 +57,9 @@
                 <executions>
                     <execution>
                         <goals>
+                            <goal>create-resources</goal>
                             <goal>npm</goal>
+                            <goal>bower</goal>
                             <goal>grunt</goal>
                         </goals>
                     </execution>
