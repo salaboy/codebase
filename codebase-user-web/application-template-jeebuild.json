@@ -58,85 +58,8 @@
         }
       }
     },
-    {
-      "kind": "ImageStream",
-      "apiVersion": "v1",
-      "metadata": {
-        "name": "jee-codebase",
-        "creationTimestamp": null
-      },
-      "status": {
-        "dockerImageRepository": ""
-      }
-    },
-    {
-      "kind": "ImageStream",
-      "apiVersion": "v1",
-      "metadata": {
-        "name": "wildfly-8-centos",
-        "creationTimestamp": null
-      },
-      "spec": {
-        "dockerImageRepository": "openshift/wildfly-8-centos"
-      }
-    },
-    {
-      "kind": "BuildConfig",
-      "apiVersion": "v1",
-      "metadata": {
-        "name": "jee-sample-build",
-        "creationTimestamp": null,
-        "labels": {
-          "name": "jee-sample-build"
-        }
-      },
-      "spec": {
-        "triggers": [
-          {
-            "type": "github",
-            "github": {
-              "secret": "secret101"
-            }
-          },
-          {
-            "type": "generic",
-            "generic": {
-              "secret": "secret101"
-            }
-          },
-          {
-            "type": "imageChange",
-            "imageChange": {}
-          }
-        ],
-        "source": {
-          "type": "Git",
-          "git": {
-            "uri": "https://github.com/Salaboy/codebase.git"
-          }
-        },
-        "strategy": {
-          "type": "Source",
-          "sourceStrategy": {
-            "from": {
-              "kind": "ImageStreamTag",
-              "name": "wildfly-8-centos:latest"
-            },
-            "incremental": true
-          }
-        },
-        "output": {
-          "to": {
-            "kind": "ImageStreamTag",
-            "name": "jee-codebase:latest"
-          }
-        },
-        "resources": {}
-      },
-      "status": {
-        "lastVersion": 0
-      }
-    },
+    
+    
     {
       "kind": "DeploymentConfig",
       "apiVersion": "v1",
