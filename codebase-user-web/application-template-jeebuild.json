@@ -79,20 +79,6 @@
         },
         "triggers": [
           {
-            "type": "ImageChange",
-            "imageChangeParams": {
-              "automatic": true,
-              "containerNames": [
-                "jee"
-              ],
-              "from": {
-                "kind": "ImageStreamTag",
-                "name": "salaboy/codebase-user:latest"
-              },
-              "lastTriggeredImage": ""
-            }
-          },
-          {
             "type": "ConfigChange"
           }
         ],
