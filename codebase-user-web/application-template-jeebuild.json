@@ -97,7 +97,7 @@
             "containers": [
               {
                 "name": "jee",
-                "image": "salaboy/codebase-user",
+                "image": "salaboy/codebase-user:latest",
                 "ports": [
                   {
                     "containerPort": 8080,

@@ -5,7 +5,7 @@
 # The default mode is 'standalone' and default configuration is based on the
 # mode. It can be 'standalone.xml' or 'domain.xml'.
 
-JBOSS_HOME=/opt/jboss/wildfly
+JBOSS_HOME=/wildfly
 JBOSS_CLI=$JBOSS_HOME/bin/jboss-cli.sh
 JBOSS_MODE=${1:-"standalone"}
 JBOSS_CONFIG=${2:-"$JBOSS_MODE.xml"}
@@ -39,7 +39,7 @@ set CONNECTION_URL=jdbc:mysql://$DB_PORT_3306_TCP_ADDR:$DB_PORT_3306_TCP_PORT/sa
 echo "Connection URL: " $CONNECTION_URL
 
 # Add MySQL module
-module add --name=com.mysql --resources=/opt/jboss/wildfly/extra/mysql-connector-java-5.1.31-bin.jar --dependencies=javax.api,javax.transaction.api
+module add --name=com.mysql --resources=$JBOSS_HOME/extra/mysql-connector-java-5.1.31-bin.jar --dependencies=javax.api,javax.transaction.api
 
 # Add MySQL driver
 /subsystem=datasources/jdbc-driver=mysql:add(driver-name=mysql,driver-module-name=com.mysql,driver-xa-datasource-class-name=com.mysql.jdbc.jdbc2.optional.MysqlXADataSource)
@@ -57,7 +57,7 @@ run-batch
 EOF
 
 # Deploy the WAR
-cp /opt/jboss/wildfly/extra/ROOT.war $JBOSS_HOME/$JBOSS_MODE/deployments/ROOT.war
+#cp $JBOSS_HOME/extra/ROOT.war $JBOSS_HOME/$JBOSS_MODE/deployments/ROOT.war
 
 echo "=> Shutting down WildFly"
 if [ "$JBOSS_MODE" = "standalone" ]; then

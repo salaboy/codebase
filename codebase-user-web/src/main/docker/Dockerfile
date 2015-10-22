@@ -1,8 +1,12 @@
-FROM jboss/wildfly
+FROM openshift/wildfly-8-centos
 
 MAINTAINER "salaboy" "salaboy@gmail.com"
 
-ADD maven/extra /opt/jboss/wildfly/extra/
+USER wildfly
 
-CMD ["/opt/jboss/wildfly/extra/execute.sh"]
+ADD maven/extra/ROOT.war /wildfly/standalone/deployments/ROOT.war
+
+ADD maven/extra /wildfly/extra/
+
+CMD ["/wildfly/extra/execute.sh"]
 
