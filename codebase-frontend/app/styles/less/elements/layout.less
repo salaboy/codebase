@@ -56,7 +56,10 @@
     height: 100%;
     width: 100%;
     box-sizing: border-box;
-    
+    transition: padding 1s ease-in-out;
+    &.ng-enter, &.ng-leave {
+        transition: all 0s !important;
+    }
 }
 .sidebar {
     position: fixed;
@@ -68,27 +71,33 @@
     left: 0;
     z-index: @sidebarIndex;
     border-right: 1px solid @gray;
+    transition: left 1s ease-in-out;
     
     & + .screen {
         @media (min-width: @md) {
             padding: 0 0 0 @sidebarWidth;
+            
+            .content.form .form-actions, .content.detail .detail-actions  {
+                padding: @padding/4 @padding @padding/4 (@sidebarWidth + @padding);
+            }
+            .sheet {
+                padding-left: (@sidebarWidth + @padding);
+            }
             .topbar {
                 padding: 0 0 0 @sidebarWidth;
             }
             .searchbar {
                 padding: 0 @padding 0 @sidebarWidth + @padding;
             }
-            .content.form .form-actions {
-                padding: @padding/4 @padding @padding/4 (@sidebarWidth + @padding);
-            }
-            .sheet {
-                padding-left: (@sidebarWidth + @padding);
-            }
         }
+        
     }
     
     @media (max-width: @md ) {
-        left: -@sidebarWidth; 
+        left: -@sidebarWidth !important;
+        &.open {
+            left: 0 !important;
+        }
     }
     
     
@@ -118,6 +127,19 @@
                     }
                 }
             }
+        }
+    }
+    
+    
+    .collapse-button {
+        position: absolute;
+        top: 0;
+        right: -@padding*1.5;
+        height: @topBarHeight;
+        line-height: @topBarHeight;
+        display: none;
+        @media (max-width: @md ) {
+           display: block;
         }
     }
     

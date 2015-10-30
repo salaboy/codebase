@@ -1,0 +1,15 @@
+// main: ../main.less
+@import (once) "../variables.less";
+.link {
+    color: @blue;
+    &.delete {
+        color: @red;
+    }
+    &.inverted {
+        color: @white;
+    }
+    
+    & + .link, & + .button {
+        margin-left: @padding/4;
+    }
+}

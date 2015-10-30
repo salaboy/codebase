@@ -48,6 +48,11 @@
                     url: '/students/new',
                     templateUrl: 'scripts/Student/New/new.html',
                     controller: 'newStudentListController'
+                })
+                .state('students/detail', {
+                    url: '/students/detail',
+                    templateUrl: 'scripts/Student/Detail/detail.html',
+                    controller: 'studentDetailController'
                 });
         }).run(function () {});
 })();

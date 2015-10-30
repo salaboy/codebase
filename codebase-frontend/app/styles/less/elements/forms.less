@@ -1,6 +1,12 @@
 // main: ../main.less
 @import (once) "../variables.less";
 form {
+    max-width: @md - @padding/2;
+    margin: 0 auto;
+    &.fluid {
+        max-width: 100%;
+        margin: 0;
+    }
     .form-group {
         padding-bottom: @padding/4;
         label {
@@ -44,7 +50,7 @@ form {
 .content {
     &.form {
         min-height: 100%;
-        padding-bottom: @padding*2;
+        padding: @topBarHeight 0 @padding*2;
         .form-actions {
             position: fixed;
             left: 0;
@@ -53,6 +59,8 @@ form {
             background-color: @blue;
             border-top: 1px solid @gray;
             padding: @padding/4 @padding/2;
+            line-height: @actionBarHeight - @padding/2;
+            box-sizing: border-box;
             .main-action {
                 float: right;
             }
