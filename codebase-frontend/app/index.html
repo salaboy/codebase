@@ -25,10 +25,19 @@
     <![endif]-->
 
   
-
-    <div class="container">
-        <section ui-view></section>
+    
+    <div class="sidebar">
+        <nav>
+            <ul id="main-nav">
+                <li class="active sidebar-link">
+                    <a href="#/students">Students</a>
+                </li>
+            </ul>
+        </nav>
     </div>
+    
+    <section ui-view class="screen"></section>
+    
 
 
 
