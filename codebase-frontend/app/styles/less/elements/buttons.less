@@ -1,0 +1,26 @@
+// main: ../main.less
+@import (once) "../variables.less";
+.button {
+    border: 1px solid @blue;
+    background-color: transparent;
+    color: @blue;
+    
+    &:hover {
+        background-color: @blue;
+        color: @white;
+    }
+    
+    &.block {
+        display: block;
+        width: 100%;
+    }
+    
+    &.inverted {
+        background-color: @blue;
+        color: @white;
+        border: 1px solid @white;
+        &:hover {
+            color: @grayDark;
+        }
+    }
+}

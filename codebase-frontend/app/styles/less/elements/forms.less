@@ -1,0 +1,62 @@
+// main: ../main.less
+@import (once) "../variables.less";
+form {
+    .form-group {
+        padding-bottom: @padding/4;
+        label {
+            display: block;
+            font-size: @fontSizeSmall;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        input.form-control {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0 (@padding/8);
+            color: lighten(@grayDark, 20%);
+            height: @inputHeight;
+            line-height: @inputHeight;
+            border: 1px solid @gray;
+            &:focus {
+                outline: 0;
+                box-shadow: 0 0 5px @blue;
+            }
+            
+            &.search {
+                width: 100%;
+                border-radius: (@inputHeight/2);
+                box-sizing: border-box;
+                padding: 0 (@padding/4);
+            }
+            
+        }
+    }  
+    
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+    
+   
+}
+
+.content {
+    &.form {
+        min-height: 100%;
+        padding-bottom: @padding*2;
+        .form-actions {
+            position: fixed;
+            left: 0;
+            width: 100%;
+            bottom: 0;
+            background-color: @blue;
+            border-top: 1px solid @gray;
+            padding: @padding/4 @padding/2;
+            .main-action {
+                float: right;
+            }
+        }
+    }
+
+}

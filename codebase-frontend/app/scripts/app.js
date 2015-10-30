@@ -19,15 +19,13 @@
     'ngTouch',
     'ngHello',
     'ui.router',
-    'user.factory',
     'rest.factory',
     'constants.factory',
-    'user.controller',
-    'about.controller',
-    'search.controller',
-    'search.factory',
-    'profile.controller',
-    'profile.factory'
+    'login.factory',
+    'login.controller',
+    'student.factory',
+    'student.list.controller',
+    'student.new.controller'
   ])
         .config(function ($stateProvider, $urlRouterProvider, helloProvider) {
             helloProvider.init({
@@ -36,15 +34,20 @@
 
             $urlRouterProvider.otherwise('/');
             $stateProvider
-                .state('home', {
+                .state('login', {
                     url: '/',
-                    templateUrl: 'scripts/User/user.html',
-                    controller: 'userController'
+                    templateUrl: 'scripts/Login/login.html',
+                    controller: 'loginController'
                 })
-                .state('about', {
-                    url: '/about',
-                    templateUrl: 'scripts/About/about.html',
-                    controller: 'aboutController'
+                .state('students', {
+                    url: '/students',
+                    templateUrl: 'scripts/Student/List/list.html',
+                    controller: 'studentListController'
+                })
+                .state('students/new', {
+                    url: '/students/new',
+                    templateUrl: 'scripts/Student/New/new.html',
+                    controller: 'newStudentListController'
                 });
         }).run(function () {});
 })();
