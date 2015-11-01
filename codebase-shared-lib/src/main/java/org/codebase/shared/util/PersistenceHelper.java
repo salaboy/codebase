@@ -3,22 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.codebase.core.user.tests;
+package org.codebase.shared.util;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Produces;
 import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 
 /**
  *
  * @author salaboy
  */
 @ApplicationScoped
-public class TestProducers {
+public class PersistenceHelper {
 
-    @Produces
+    @PersistenceContext
+    private EntityManager em;
+
+   
+
     public EntityManager getEntityManager() {
-        return Persistence.createEntityManagerFactory("primary").createEntityManager();
+        return em;
     }
 }

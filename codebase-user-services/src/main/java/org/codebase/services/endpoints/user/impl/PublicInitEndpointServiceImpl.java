@@ -20,8 +20,8 @@ import javax.ws.rs.core.Response;
 import org.codebase.model.user.User;
 
 import org.codebase.services.endpoints.user.api.PublicInitEndpointService;
-import org.codebase.core.exceptions.ServiceException;
 import org.codebase.core.user.api.UsersService;
+import org.codebase.shared.exceptions.ServiceException;
 
 //http://localhost:8080/codebase-server/rest/public/app/init
 @Stateless

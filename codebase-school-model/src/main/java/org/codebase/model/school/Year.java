@@ -14,7 +14,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
-import org.hibernate.search.annotations.Indexed;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
@@ -23,7 +22,6 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 @Entity(name = "Year")
 @Table(name = "Year")
-@Indexed
 @XmlRootElement
 public class Year implements Serializable {
 

@@ -9,58 +9,41 @@
     <artifactId>codebase-school-services</artifactId>
     <name>CodeBase :: School Services</name>
     <packaging>jar</packaging>
-    
-    
-
-   <dependencies>
+    <properties>
+        <version.wildfly.bom>9.0.0.Beta2</version.wildfly.bom>
+        <version.h2>1.4.187</version.h2>
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.wildfly.bom</groupId>
+                <artifactId>jboss-javaee-7.0-with-all</artifactId>
+                <version>${version.wildfly.bom}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <dependencies>
         <dependency>
             <groupId>org.codebase</groupId>
-            <artifactId>codebase-school-model</artifactId>
+            <artifactId>codebase-shared-lib</artifactId>
             <version>${project.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.jboss.weld.se</groupId>
-                    <artifactId>weld-se-core</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.codebase</groupId>
             <artifactId>codebase-school-core</artifactId>
             <version>${project.version}</version>
-            
         </dependency>
         <dependency>
-            <groupId>org.jboss.resteasy</groupId>
-            <artifactId>resteasy-multipart-provider</artifactId>
-            <scope>provided</scope>
-            <type>jar</type>
+            <groupId>org.wildfly.swarm</groupId>
+            <artifactId>wildfly-swarm-jaxrs-weld</artifactId>
+            <version>${version.wildfly-swarm}</version>
         </dependency>
         <dependency>
-            <groupId>org.jboss.resteasy</groupId>
-            <artifactId>resteasy-validator-provider-11</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>2.1</version>
-            <scope>provided</scope>
-        </dependency>
-        
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.6.0</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
-            <version>2.6</version>
-            <scope>provided</scope>
-            <type>jar</type>
+            <groupId>org.wildfly.swarm</groupId>
+            <artifactId>wildfly-swarm-jpa</artifactId>
+            <version>${version.wildfly-swarm}</version>
         </dependency>
         <dependency>  
             <groupId>javax</groupId>    
@@ -69,10 +52,41 @@
             <scope>provided</scope>
         </dependency> 
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
+            <groupId>org.wildfly.swarm</groupId>
+            <artifactId>wildfly-swarm-hibernate-validator</artifactId>
+            <version>${version.wildfly-swarm}</version>
         </dependency>
-       
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${version.h2}</version>
+        </dependency>
     </dependencies>
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
     
+        <plugins>
+            
+            <plugin>
+                <groupId>org.wildfly.swarm</groupId>
+                <artifactId>wildfly-swarm-plugin</artifactId>
+                <version>${version.wildfly-swarm}</version>
+                <configuration>
+                    <mainClass>org.codebase.services.endpoints.school.App</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>package</goal>
+                        </goals>
+                    </execution>
+                </executions> 
+            </plugin>
+        </plugins>
+    </build>
 </project>

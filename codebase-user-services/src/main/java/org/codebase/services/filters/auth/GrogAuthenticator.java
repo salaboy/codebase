@@ -15,9 +15,9 @@ import java.util.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import org.codebase.model.user.User;
-import org.codebase.core.exceptions.ServiceException;
-import org.codebase.core.util.CodebaseUtil;
 import org.codebase.core.user.api.UsersService;
+import org.codebase.shared.util.CodebaseUtil;
+import org.codebase.shared.exceptions.ServiceException;
 
 /**
  *

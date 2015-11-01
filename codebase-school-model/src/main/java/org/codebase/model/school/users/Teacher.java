@@ -7,22 +7,16 @@ package org.codebase.model.school.users;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import org.codebase.model.user.User;
-import org.hibernate.search.annotations.Indexed;
 
 /**
  *
  * @author salaboy
  */
 @Entity
-@Indexed
 @DiscriminatorValue(value = "Teacher")
 public class Teacher extends User {
  
     private String teacherDescription;
-
-  
-    
     
     public Teacher() {
     }

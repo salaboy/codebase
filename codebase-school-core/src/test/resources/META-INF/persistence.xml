@@ -24,14 +24,14 @@
         
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <mapping-file>META-INF/users.xml</mapping-file>
-        <mapping-file>META-INF/school.xml</mapping-file>
-        <mapping-file>META-INF/teacher.xml</mapping-file>
-        <mapping-file>META-INF/student.xml</mapping-file>
-        <mapping-file>META-INF/course.xml</mapping-file>
-        <mapping-file>META-INF/year.xml</mapping-file>
-        <mapping-file>META-INF/schoolclass.xml</mapping-file>
+        <mapping-file>META-INF/schools.xml</mapping-file>
+        <mapping-file>META-INF/teachers.xml</mapping-file>
+        <mapping-file>META-INF/students.xml</mapping-file>
+        <mapping-file>META-INF/courses.xml</mapping-file>
+        <mapping-file>META-INF/years.xml</mapping-file>
+        <mapping-file>META-INF/schoolclasses.xml</mapping-file>
 
-        <class>org.codebase.model.user.User</class>
+        <class>org.codebase.model.school.users.User</class>
         <class>org.codebase.model.school.School</class>
         <class>org.codebase.model.school.users.Student</class>
         <class>org.codebase.model.school.users.Teacher</class>
@@ -45,10 +45,8 @@
             <property name="hibernate.connection.url" value="jdbc:h2:mem:db"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
             
-            
             <!-- Properties for Hibernate -->
             <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
-            <property name="hibernate.search.default.directory_provider" value="ram"/>
             <property name="hibernate.show_sql" value="false"/>
         </properties>
         

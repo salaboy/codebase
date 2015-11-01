@@ -26,30 +26,15 @@
         ////////////
 
         function get(ext) {
-            return $http.get(constants.server + ext, constants.authHeaders).then(function (result) {
-                return result.data;
-            }, function (error) {
-                console.log(error);
-                return null;
-            });
+            return $http.get(constants.server + ext, constants.authHeaders);
         };
 
         function post(ext, data) {
-            return $http.post(constants.server + ext, data).then(function (result) {
-                return result.data;
-            }, function (error) {
-                console.log(error);
-                return null;
-            });
+            return $http.post(constants.server + ext, data);
         };
 
         function postWithAuthentication(ext, data) {
-            $http.post(constants.server, data, constants.authHeaders).then(function (result) {
-                return result.data;
-            }, function (error) {
-                console.log(error);
-                return null;
-            });
+            $http.post(constants.server, data, constants.authHeaders);
         };
     }
 })();

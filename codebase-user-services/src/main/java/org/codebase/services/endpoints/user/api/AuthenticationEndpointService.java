@@ -17,8 +17,9 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.codebase.core.exceptions.ServiceException;
 import org.codebase.model.user.User;
+import org.codebase.shared.exceptions.ServiceException;
+
 
 
 

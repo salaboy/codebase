@@ -11,14 +11,9 @@
     <name>CodeBase :: School Core</name>
     <packaging>jar</packaging>
     <dependencies>
-	<dependency>
-            <groupId>org.codebase</groupId>
-            <artifactId>codebase-user-model</artifactId>
-            <version>${project.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.codebase</groupId>
-            <artifactId>codebase-user-core</artifactId>
+            <artifactId>codebase-shared-lib</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -49,18 +44,7 @@
             <type>jar</type>
             <scope>provided</scope>
         </dependency> 
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-search-orm</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
-            <version>2.6</version>
-            <scope>provided</scope>
-            <type>jar</type>
-        </dependency>
+      
         <!-- Test Deps --> 
         <dependency>
             <groupId>org.jboss.shrinkwrap.resolver</groupId>
@@ -121,12 +105,7 @@
             <scope>test</scope>
         </dependency>
         
-        <dependency>
-            <groupId>org.glassfish</groupId>
-            <artifactId>javax.json</artifactId>
-            <version>1.0</version>
-            <scope>test</scope>
-        </dependency>
+     
     </dependencies>
     <dependencyManagement>
         <dependencies>

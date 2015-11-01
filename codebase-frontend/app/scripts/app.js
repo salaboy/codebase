@@ -23,9 +23,11 @@
     'constants.factory',
     'login.factory',
     'login.controller',
-    'student.factory',
-    'student.list.controller',
-    'student.new.controller'
+    'school.factory',
+    'school.list.controller',
+    'school.new.controller',
+    'school.details.controller',
+    'school.edit.controller'
   ])
         .config(function ($stateProvider, $urlRouterProvider, helloProvider) {
             helloProvider.init({
@@ -39,20 +41,25 @@
                     templateUrl: 'scripts/Login/login.html',
                     controller: 'loginController'
                 })
-                .state('students', {
-                    url: '/students',
-                    templateUrl: 'scripts/Student/List/list.html',
-                    controller: 'studentListController'
+                .state('schools', {
+                    url: '/schools',
+                    templateUrl: 'scripts/Schools/List/list.html',
+                    controller: 'schoolListController'
                 })
-                .state('students/new', {
-                    url: '/students/new',
-                    templateUrl: 'scripts/Student/New/new.html',
-                    controller: 'newStudentListController'
+                .state('schools/new', {
+                    url: '/schools/new',
+                    templateUrl: 'scripts/Schools/New/new.html',
+                    controller: 'newSchoolController'
                 })
-                .state('students/detail', {
-                    url: '/students/detail',
-                    templateUrl: 'scripts/Student/Detail/detail.html',
-                    controller: 'studentDetailController'
+                .state('schools/edit', {
+                    url: '/schools/edit',
+                    templateUrl: 'scripts/Schools/Edit/edit.html',
+                    controller: 'editSchoolController'
+                })
+                .state('schools/details', {
+                    url: '/schools/details',
+                    templateUrl: 'scripts/Schools/Details/details.html',
+                    controller: 'schoolDetailsController'
                 });
         }).run(function () {});
 })();

@@ -5,11 +5,8 @@
  */
 package org.codebase.core.user.tests;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.inject.Inject;
 
-import org.codebase.core.exceptions.ServiceException;
 import org.codebase.model.user.User;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -24,6 +21,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.codebase.core.user.api.UsersService;
+import org.codebase.shared.exceptions.ServiceException;
 
 /**
  *

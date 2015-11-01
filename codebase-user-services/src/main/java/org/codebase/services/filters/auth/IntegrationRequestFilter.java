@@ -19,7 +19,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang.StringUtils;
-import org.codebase.core.util.CodebaseUtil;
+import org.codebase.shared.util.CodebaseUtil;
 import org.joda.time.DateTime;
 
 /**

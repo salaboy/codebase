@@ -6,13 +6,13 @@
 package org.codebase.core.school.api;
 
 import java.util.List;
-import org.codebase.core.exceptions.ServiceException;
 import org.codebase.model.school.Course;
 import org.codebase.model.school.School;
 import org.codebase.model.school.SchoolClass;
 import org.codebase.model.school.Year;
 import org.codebase.model.school.users.Student;
 import org.codebase.model.school.users.Teacher;
+import org.codebase.shared.exceptions.ServiceException;
 
 /**
  *
@@ -21,6 +21,8 @@ import org.codebase.model.school.users.Teacher;
 public interface SchoolsService {
 
     public Long newSchool(School school) throws ServiceException;
+    
+    public void updateSchool(School school) throws ServiceException;
 
     public Long newTeacher(Teacher teacher);
 
@@ -44,6 +46,7 @@ public interface SchoolsService {
 
     public List<School> getAllSchools();
     
+    public School getSchool(Long schoolId);
 
     
 

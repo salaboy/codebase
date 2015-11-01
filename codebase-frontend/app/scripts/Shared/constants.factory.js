@@ -10,7 +10,7 @@
     function constantsFactory($cookies) {
         var service = {
             port: '8080',
-            server: 'http://localhost:8080/api/codename-server/',
+            server: 'http://localhost:8080/api/',
             authHeader: {
                 headers: {
                     service_key: 'webkey:' + $cookies.get('user_email'),

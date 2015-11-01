@@ -15,56 +15,19 @@
     <packaging>jar</packaging>
     
     <dependencies>
-      
-         <dependency>  
-            <groupId>org.codebase</groupId>  
-            <artifactId>codebase-user-model</artifactId>  
-            <version>${project.version}</version>
-            
-        </dependency> 
         
-        <dependency>  
-            <groupId>org.eclipse.persistence</groupId>  
-            <artifactId>javax.persistence</artifactId>  
-            <version>2.1.0</version>
-            <scope>provided</scope>
-        </dependency> 
-        <!-- JSR-303 (Bean Validation) Implementation -->
-        <!-- Provides portable constraints such as @Email -->
-        <!-- Hibernate Validator is shipped in JBoss WildFly -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
-
-       
-
-        <!--Import dependencies to hibernate packages(eg. hibernate-core) 
-        depending on features you want to use like Hibernate Session used in the 
-        quickstart -->
-        <!--please note that scope is provided as these jars are shipped 
-        with wildfly -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>dom4j</groupId>
-                    <artifactId>dom4j</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
+<!--        <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-search-orm</artifactId>
+        </dependency>-->
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.1-api</artifactId>
+            <type>jar</type>
         </dependency>
     </dependencies>
   

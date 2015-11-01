@@ -7,24 +7,23 @@ package org.codebase.services.endpoints.school.impl;
 
 import java.util.List;
 import java.util.logging.Logger;
-import javax.ejb.Stateless;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.json.Json;
-import javax.json.JsonArrayBuilder;
-import javax.json.JsonObjectBuilder;
-import javax.ws.rs.core.Response;
-
-import org.codebase.core.exceptions.ServiceException;
 import org.codebase.core.school.api.SchoolsService;
+import org.codebase.model.school.Course;
 import org.codebase.model.school.School;
+import org.codebase.model.school.SchoolClass;
+import org.codebase.model.school.Year;
+import org.codebase.model.school.users.Student;
+import org.codebase.model.school.users.Teacher;
 import org.codebase.services.endpoints.school.api.PublicSchoolEndpointService;
-import static org.codebase.services.endpoints.school.impl.SchoolsHelper.createJsonSchool;
+import org.codebase.shared.exceptions.ServiceException;
 
 /**
  *
  * @author salaboy
  */
-@Stateless
+@ApplicationScoped
 public class PublicSchoolEndpointServiceImpl implements PublicSchoolEndpointService {
 
     @Inject
@@ -36,22 +35,77 @@ public class PublicSchoolEndpointServiceImpl implements PublicSchoolEndpointServ
 
     }
 
-   
-
     @Override
-    public Response getAll() throws ServiceException {
-        List<School> schools = schoolsService.getAllSchools();
-        JsonArrayBuilder jsonArrayBuilder = Json.createArrayBuilder();
-
-        for (School s : schools) {
-
-            JsonObjectBuilder jsonObjBuilder = createJsonSchool(s);
-            jsonArrayBuilder.add(jsonObjBuilder);
-
-        }
-        return Response.ok(jsonArrayBuilder.build().toString()).build();
+    public List<School> getAllSchools() throws ServiceException {
+        return schoolsService.getAllSchools();    
     }
 
-   
+    @Override
+    public Long newSchool(School school) throws ServiceException {
+        return schoolsService.newSchool(school);
+    }
+
+    @Override
+    public Long newTeacher(Teacher teacher) {
+        return schoolsService.newTeacher(teacher);
+    }
+
+    @Override
+    public Long newCourse(Course course) {
+        return schoolsService.newCourse(course);
+    }
+
+    @Override
+    public Long newYear(Year year) {
+        return schoolsService.newYear(year);
+    }
+
+    @Override
+    public Long newSchoolClass(SchoolClass schoolClass) {
+        return schoolsService.newSchoolClass(schoolClass);
+    }
+
+    @Override
+    public Long newStudent(Student student) {
+        return schoolsService.newStudent(student);
+    }
+
+    @Override
+    public void enrollStudentToSchoolClass(Long schoolClassId, Student student) {
+        schoolsService.enrollStudentToSchoolClass(schoolClassId, student);
+    }
+
+    @Override
+    public List<Student> getStudentsBySchoolClassCode(Long newSchoolId, String math) {
+        return schoolsService.getStudentsBySchoolClassCode(newSchoolId, math);
+    }
+
+    @Override
+    public List<SchoolClass> getSchoolClassByYear(Long newSchoolId, String string) {
+        return schoolsService.getSchoolClassByYear(newSchoolId, string);
+    }
+
+    @Override
+    public List<Year> getYearsBySchool(Long newSchoolId) {
+        return schoolsService.getYearsBySchool(newSchoolId);
+    }
+
+    @Override
+    public List<Course> getCoursesBySchool(Long newSchoolId) {
+        return schoolsService.getCoursesBySchool(newSchoolId);
+    }
+    
+    @Override
+    public School getSchool(Long schoolId) {
+        return schoolsService.getSchool(schoolId);
+    }
+
+    @Override
+    public void updateSchool(School school) throws ServiceException {
+        schoolsService.updateSchool(school);
+    }
+    
+    
+    
 
 }

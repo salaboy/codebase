@@ -28,8 +28,13 @@
             <groupId>org.codebase</groupId>
             <artifactId>codebase-user-core</artifactId>
             <version>${project.version}</version>
-            
         </dependency>
+        <dependency>
+            <groupId>org.codebase</groupId>
+            <artifactId>codebase-shared-lib</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-multipart-provider</artifactId>

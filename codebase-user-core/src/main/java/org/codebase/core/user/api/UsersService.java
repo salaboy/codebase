@@ -7,8 +7,8 @@ package org.codebase.core.user.api;
 
 import java.util.Date;
 import java.util.List;
-import org.codebase.core.exceptions.ServiceException;
 import org.codebase.model.user.User;
+import org.codebase.shared.exceptions.ServiceException;
 
 /**
  *

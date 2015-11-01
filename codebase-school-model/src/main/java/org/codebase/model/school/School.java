@@ -13,11 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
-import org.hibernate.search.annotations.Boost;
-import org.hibernate.search.annotations.Indexed;
-import org.hibernate.search.annotations.Latitude;
-import org.hibernate.search.annotations.Longitude;
-import org.hibernate.search.annotations.Spatial;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
@@ -26,17 +21,12 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 @Entity(name = "School")
 @Table(name = "School")
-@Indexed
-@Spatial
 @XmlRootElement
 public class School implements Serializable {
-
     private static final long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     
     @NotEmpty
     @NotNull
@@ -48,12 +38,10 @@ public class School implements Serializable {
     
     private String contactEmail;
     
-    @Latitude
-    @Boost(value = 1.5f)
+    
     private Double latitude;
 
-    @Longitude
-    @Boost(value = 1.5f)
+    
     private Double longitude;
     
     public School() {

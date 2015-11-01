@@ -12,6 +12,8 @@
 
     <modules>
     
+        <module>codebase-shared-lib</module>
+        
         <module>codebase-user-model</module>
         <module>codebase-user-core</module>
         <module>codebase-user-services</module>
@@ -19,9 +21,11 @@
 	<module>codebase-school-model</module>
         <module>codebase-school-core</module>
 	<module>codebase-school-services</module>
+        
+        
 
-        <module>codebase-user-web</module>
-        <module>codebase-frontend</module>
+<!--        <module>codebase-user-web</module>
+        <module>codebase-frontend</module>-->
 
 
         <module>codebase-kie</module>
@@ -37,6 +41,7 @@
         <maven.min.version>3.2.3</maven.min.version>
         <version.wildfly>9.0.0.Beta2</version.wildfly>
         <github.global.server>github</github.global.server>
+        <version.wildfly-swarm>1.0.0.Alpha5</version.wildfly-swarm>
     </properties>
     
      

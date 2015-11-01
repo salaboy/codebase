@@ -15,8 +15,6 @@ import javax.inject.Inject;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.CacheControl;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
@@ -24,10 +22,10 @@ import javax.ws.rs.core.Response;
 
 import org.codebase.model.user.User;
 import org.codebase.services.endpoints.user.api.AuthenticationEndpointService;
-import org.codebase.core.exceptions.ServiceException;
 import org.codebase.services.filters.auth.GrogAuthenticator;
 import org.codebase.services.filters.auth.GrogHTTPHeaderNames;
 import org.codebase.core.user.api.UsersService;
+import org.codebase.shared.exceptions.ServiceException;
 
 
 /**

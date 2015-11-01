@@ -18,7 +18,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 import org.codebase.model.school.users.Student;
-import org.hibernate.search.annotations.Indexed;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
@@ -27,7 +26,6 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 @Entity(name = "SchoolClass")
 @Table(name = "SchoolClass")
-@Indexed
 @XmlRootElement
 public class SchoolClass implements Serializable {
 

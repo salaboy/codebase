@@ -5,30 +5,21 @@
  */
 package org.codebase.core.user.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import org.apache.lucene.search.Query;
-import org.apache.lucene.search.Sort;
 import org.codebase.model.user.User;
 import org.codebase.core.user.api.UsersQueryService;
-import org.codebase.core.exceptions.ServiceException;
-import org.codebase.core.util.PersistenceManager;
+import org.codebase.shared.exceptions.ServiceException;
 import org.hibernate.search.jpa.FullTextEntityManager;
 import org.hibernate.search.jpa.FullTextQuery;
 import org.hibernate.search.jpa.Search;
 import org.hibernate.search.query.dsl.BooleanJunction;
 import org.hibernate.search.query.dsl.QueryBuilder;
-import org.hibernate.search.query.dsl.Unit;
-import org.hibernate.search.query.engine.spi.FacetManager;
-import org.hibernate.search.query.facet.Facet;
-import org.hibernate.search.query.facet.FacetSelection;
-import org.hibernate.search.query.facet.FacetSortOrder;
-import org.hibernate.search.query.facet.FacetingRequest;
-import org.hibernate.search.spatial.DistanceSortField;
 
 /**
  *
@@ -37,8 +28,8 @@ import org.hibernate.search.spatial.DistanceSortField;
 @ApplicationScoped
 public class UsersQueryServiceImpl implements UsersQueryService {
 
-    @Inject
-    private PersistenceManager pm;
+    @PersistenceContext
+    private EntityManager pm;
 
     private final static Logger log = Logger.getLogger(UsersQueryServiceImpl.class.getName());
 
@@ -47,13 +38,13 @@ public class UsersQueryServiceImpl implements UsersQueryService {
 
     @PostConstruct
     public void init() throws InterruptedException {
-        Search.getFullTextEntityManager(pm.getEm()).createIndexer().startAndWait();
+        Search.getFullTextEntityManager(pm).createIndexer().startAndWait();
     }
 
 
     @Override
     public List<User> search( Integer offset, Integer limit, List<String> excludesEmails) throws ServiceException {
-        FullTextEntityManager fullTextEm = Search.getFullTextEntityManager(pm.getEm());
+        FullTextEntityManager fullTextEm = Search.getFullTextEntityManager(pm);
         QueryBuilder qb = fullTextEm.getSearchFactory().buildQueryBuilder().forEntity(User.class).get();
         String excludesString = "";
         for (String e : excludesEmails) {
@@ -63,11 +54,7 @@ public class UsersQueryServiceImpl implements UsersQueryService {
         BooleanJunction<BooleanJunction> bool = qb.bool();
         bool.must(qb.keyword().onField("live").matching("true").createQuery());
         bool.must(qb.keyword().onField("email").matching(excludesString).createQuery()).not();
-        
-        
-        
-        
-       
+
         Query query = bool.createQuery();
 
         FullTextQuery fullTextQuery = fullTextEm.createFullTextQuery(query, User.class);
