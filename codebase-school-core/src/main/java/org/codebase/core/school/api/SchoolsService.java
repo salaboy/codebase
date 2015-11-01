@@ -48,6 +48,8 @@ public interface SchoolsService {
     
     public School getSchool(Long schoolId);
 
+    public void deleteSchool(Long schoolId);
+
     
 
 }

@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -48,6 +49,12 @@ public interface PublicSchoolEndpointService extends Serializable {
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
     void updateSchool(@NotNull School school) throws ServiceException;
+    
+    @DELETE
+    @Path("/{id}")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    void deleteSchool(@PathParam("id") Long schoolId) throws ServiceException;
 
     @POST
     @Path("teachers/new")

@@ -128,6 +128,13 @@ public class SchoolsServiceImpl implements SchoolsService {
         schoolById.setWebsite(school.getWebsite());
         em.merge(schoolById);
     }
+
+    @Override
+    @Transactional
+    public void deleteSchool(Long schoolId) {
+        School schoolById = em.find(School.class, schoolId);
+        em.remove(schoolById);
+    }
     
     
 

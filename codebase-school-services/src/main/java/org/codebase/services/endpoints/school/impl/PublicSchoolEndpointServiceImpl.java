@@ -104,6 +104,12 @@ public class PublicSchoolEndpointServiceImpl implements PublicSchoolEndpointServ
     public void updateSchool(School school) throws ServiceException {
         schoolsService.updateSchool(school);
     }
+
+    @Override
+    public void deleteSchool(Long schoolId) throws ServiceException {
+        schoolsService.deleteSchool(schoolId);
+    }
+    
     
     
     

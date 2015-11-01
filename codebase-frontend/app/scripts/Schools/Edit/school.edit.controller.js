@@ -22,6 +22,14 @@ angular.module('school.edit.controller', [])
 
                 };
 
+                 $scope.deleteSchool = function (id) {
+                    schoolFactory.deleteSchool(id).success(function (data) {
+                        $location.path("/schools");
+                    }).error(function (error) {
+                        console.log("Error: " + error);
+                    });
+
+                };
                 $scope.updateSchool = function (school) {
                     console.log(school);
                     schoolFactory.updateSchool(school).success(function (data) {
