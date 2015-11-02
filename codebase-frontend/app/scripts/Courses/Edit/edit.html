@@ -1,0 +1,41 @@
+
+<div class="sheet topbar">
+    <div class="title">
+        Edit Course
+    </div>
+</div>
+
+<div class="content form">
+    <div class="box">
+        <form>
+            <div class="container-fluid">
+                <fieldset>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>School</label>
+                                <input type="text"  ng-model="course.school.id" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Subject</label>
+                                <input type="text"  ng-model="course.subject" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    
+                </fieldset>
+            </div>
+        </form>
+    </div>
+    <div class="form-actions">
+        <a href class="link delete" ng-click="deleteCourse(course.id)">Delete</a>
+        <a class="link inverted" href="#/courses">Cancel</a>
+        <div class="main-action">
+            <button class="button main inverted" ng-click="updateCourse(course)">Update</button>
+        </div>
+    </div>
+</div>
+
+

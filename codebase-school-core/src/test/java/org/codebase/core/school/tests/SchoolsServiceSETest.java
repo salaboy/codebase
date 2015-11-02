@@ -89,7 +89,7 @@ public class SchoolsServiceSETest {
         Course course = new Course();
         course.setSubject("Maths");
         course.setSchool(school);
-        course.setTeacher(teacher);
+
 
         Long newCourseId = schoolsService.newCourse(course);
         Assert.assertNotNull(newCourseId);
@@ -107,6 +107,7 @@ public class SchoolsServiceSETest {
         schoolClass.setYear(year);
         schoolClass.setCode("2015Math");
         schoolClass.enrollStudent(student);
+        schoolClass.setTeacher(teacher);
         Long newScoolClassId = schoolsService.newSchoolClass(schoolClass);
 
         Assert.assertNotNull(newScoolClassId);
@@ -135,7 +136,7 @@ public class SchoolsServiceSETest {
         Course courseEnglish = new Course();
         courseEnglish.setSubject("English");
         courseEnglish.setSchool(school);
-        courseEnglish.setTeacher(teacher);
+        
 
         Long newCourseIdEnglish = schoolsService.newCourse(courseEnglish);
         Assert.assertNotNull(newCourseIdEnglish);
@@ -150,6 +151,7 @@ public class SchoolsServiceSETest {
         schoolClassEnglish.setCourse(courseEnglish);
         schoolClassEnglish.setYear(year2016);
         schoolClassEnglish.setCode("2016English");
+        schoolClassEnglish.setTeacher(teacher);
 
         Long newScoolClassIdEnglish2016 = schoolsService.newSchoolClass(schoolClassEnglish);
         Assert.assertNotNull(newScoolClassIdEnglish2016);

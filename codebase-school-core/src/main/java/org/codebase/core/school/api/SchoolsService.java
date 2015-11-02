@@ -50,6 +50,10 @@ public interface SchoolsService {
 
     public void deleteSchool(Long schoolId);
 
-    
+    public void updateCourse(Long courseId, Course course);
+
+    public void deleteCourse(Long courseId);
+
+    public Course getCourse(Long courseId);
 
 }

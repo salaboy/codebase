@@ -44,11 +44,23 @@ public interface PublicSchoolEndpointService extends Serializable {
     @Produces({MediaType.APPLICATION_JSON})
     Long newSchool(@NotNull School school) throws ServiceException;
     
-    @POST
+    @PUT
     @Path("/update")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
     void updateSchool(@NotNull School school) throws ServiceException;
+    
+    @PUT
+    @Path("courses/{id}/update")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    void updateCourse(@PathParam("id") Long courseId, @NotNull Course course) throws ServiceException;
+    
+    @DELETE
+    @Path("/courses/{id}")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    void deleteCourse(@PathParam("id") Long courseId) throws ServiceException;
     
     @DELETE
     @Path("/{id}")
@@ -63,7 +75,7 @@ public interface PublicSchoolEndpointService extends Serializable {
     Long newTeacher(@NotNull Teacher teacher);
 
     @POST
-    @Path("courses/new")
+    @Path("/courses/new")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
     Long newCourse(@NotNull Course course);
@@ -121,5 +133,11 @@ public interface PublicSchoolEndpointService extends Serializable {
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
     School getSchool(@PathParam("id") Long schoolId);
+    
+    @GET
+    @Path("/courses/{id}")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    Course getCourse(@PathParam("id") Long courseId);
 
 }

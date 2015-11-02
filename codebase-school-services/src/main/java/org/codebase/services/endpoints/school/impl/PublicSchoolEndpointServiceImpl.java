@@ -50,10 +50,6 @@ public class PublicSchoolEndpointServiceImpl implements PublicSchoolEndpointServ
         return schoolsService.newTeacher(teacher);
     }
 
-    @Override
-    public Long newCourse(Course course) {
-        return schoolsService.newCourse(course);
-    }
 
     @Override
     public Long newYear(Year year) {
@@ -109,6 +105,27 @@ public class PublicSchoolEndpointServiceImpl implements PublicSchoolEndpointServ
     public void deleteSchool(Long schoolId) throws ServiceException {
         schoolsService.deleteSchool(schoolId);
     }
+
+    @Override
+    public void updateCourse(Long courseId, Course course) throws ServiceException {
+        schoolsService.updateCourse(courseId, course);
+    }
+
+    @Override
+    public void deleteCourse(Long courseId) throws ServiceException {
+        schoolsService.deleteCourse(courseId);
+    }
+
+    @Override
+    public Long newCourse(Course course) {
+        return schoolsService.newCourse(course);
+    }
+
+    @Override
+    public Course getCourse(Long courseId) {
+        return schoolsService.getCourse(courseId);
+    }
+    
     
     
     

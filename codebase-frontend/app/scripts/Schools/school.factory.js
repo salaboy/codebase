@@ -29,7 +29,7 @@
         }
        
        function updateSchool(school){
-           return $http.post(constants.server + 'schools/update', school, constants.headers);
+           return $http.put(constants.server + 'schools/update', school, constants.headers);
        }
        
        function deleteSchool(id){

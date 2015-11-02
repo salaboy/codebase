@@ -42,10 +42,7 @@ public class Course implements Serializable {
     @NotNull
     @ManyToOne
     private School school;
-    
-    @NotNull
-    @ManyToOne
-    private Teacher teacher;
+   
     
     
     public Course() {
@@ -76,19 +73,10 @@ public class Course implements Serializable {
         this.school = school;
     }
 
-    public Teacher getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
-    }
-    
-    
 
     @Override
     public String toString() {
-        return "Course{" + "id=" + id + ", subject=" + subject + ", school=" + school + ", teacher=" + teacher + '}';
+        return "Course{" + "id=" + id + ", subject=" + subject + ", school=" + school + '}';
     }
 
 }

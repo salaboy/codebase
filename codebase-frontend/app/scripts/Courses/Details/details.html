@@ -1,0 +1,26 @@
+<div class="sheet topbar">
+    <div class="title">
+        Course Details
+    </div>
+</div>
+<div class="content detail">
+    <div class="box">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    {{course.subject}}
+                </div>
+                <div class="col-md-4">
+                    {{course.school.id}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="detail-actions">
+        <div class="main-action">
+            <a href="#/courses" class="link">Back</a>
+            
+            <button class="button" ng-click="go('/courses/edit', {id: course.id })">Edit</button>
+        </div>
+    </div>
+</div>

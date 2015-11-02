@@ -18,6 +18,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 import org.codebase.model.school.users.Student;
+import org.codebase.model.school.users.Teacher;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
@@ -35,25 +36,27 @@ public class SchoolClass implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    
     @NotEmpty
     @NotNull
     private String code;
-    
+
     @NotNull
     @ManyToOne
     private Course course;
-    
+
     @NotNull
     @ManyToOne
     private Year year;
 
     @OneToMany
     private List<Student> students;
-    
+
+    @ManyToOne
+    @NotNull
+    private Teacher teacher;
+
     public SchoolClass() {
     }
-
 
     public Long getId() {
         return id;
@@ -86,9 +89,9 @@ public class SchoolClass implements Serializable {
     public void setStudents(List<Student> students) {
         this.students = students;
     }
-    
-    public void enrollStudent(Student student){
-        if(this.students == null){
+
+    public void enrollStudent(Student student) {
+        if (this.students == null) {
             this.students = new ArrayList<Student>();
         }
         this.students.add(student);
@@ -101,16 +104,18 @@ public class SchoolClass implements Serializable {
     public void setCourse(Course course) {
         this.course = course;
     }
-    
-    
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
 
     @Override
     public String toString() {
-        return "SchoolClass{" + "id=" + id + ", code=" + code + ", year=" + year + '}';
+        return "SchoolClass{" + "id=" + id + ", code=" + code + ", course=" + course + ", year=" + year + ", students=" + students + ", teacher=" + teacher + '}';
     }
-
-   
-
-   
 
 }
