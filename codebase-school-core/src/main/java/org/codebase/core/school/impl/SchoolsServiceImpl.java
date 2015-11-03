@@ -157,7 +157,34 @@ public class SchoolsServiceImpl implements SchoolsService {
     public Course getCourse(Long courseId) {
         return em.find(Course.class, courseId);
     }
-    
+
+    @Override
+    @Transactional
+    public void deleteStudent(Long studentId) {
+        Student studentById = em.find(Student.class, studentId);
+        em.remove(studentById);
+    }
+
+    @Override
+    public List<Student> getAllStudents() {
+        return (List<Student>) em.createNamedQuery("Student.getAll").getResultList();
+    }
+
+    @Override
+    public Student getStudent(Long studentId) {
+        return em.find(Student.class, studentId);
+    }
+
+    @Override
+    @Transactional
+    public void updateStudent(Long studentId, Student student) {
+        Student studentById = em.find(Student.class, studentId);
+        studentById.setFirstname(student.getFirstname());
+        studentById.setLastname(student.getLastname());
+        studentById.setEmail(student.getEmail());
+        studentById.setPassword(student.getPassword());
+        em.merge(studentById);
+    }
     
     
 

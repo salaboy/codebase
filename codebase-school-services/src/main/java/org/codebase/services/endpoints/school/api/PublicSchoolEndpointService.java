@@ -56,6 +56,12 @@ public interface PublicSchoolEndpointService extends Serializable {
     @Produces({MediaType.APPLICATION_JSON})
     void updateCourse(@PathParam("id") Long courseId, @NotNull Course course) throws ServiceException;
     
+    @PUT
+    @Path("students/{id}/update")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    void updateStudent(@PathParam("id") Long studentId, @NotNull Student student) throws ServiceException;
+    
     @DELETE
     @Path("/courses/{id}")
     @Consumes({MediaType.APPLICATION_JSON})
@@ -67,6 +73,12 @@ public interface PublicSchoolEndpointService extends Serializable {
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
     void deleteSchool(@PathParam("id") Long schoolId) throws ServiceException;
+    
+    @DELETE
+    @Path("/students/{id}")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    void deleteStudent(@PathParam("id") Long studentId) throws ServiceException;
 
     @POST
     @Path("teachers/new")
@@ -127,6 +139,12 @@ public interface PublicSchoolEndpointService extends Serializable {
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
     List<Course> getCoursesBySchool(@PathParam("id") Long newSchoolId);
+    
+    @GET
+    @Path("/students")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    List<Student> getAllStudents();
   
     @GET
     @Path("/{id}")
@@ -139,5 +157,13 @@ public interface PublicSchoolEndpointService extends Serializable {
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
     Course getCourse(@PathParam("id") Long courseId);
+    
+    
+    @GET
+    @Path("/students/{id}")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    Student getStudent(@PathParam("id") Long studentId);
+
 
 }

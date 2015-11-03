@@ -56,4 +56,12 @@ public interface SchoolsService {
 
     public Course getCourse(Long courseId);
 
+    public void deleteStudent(Long studentId);
+
+    public List<Student> getAllStudents();
+
+    public Student getStudent(Long studentId);
+
+    public void updateStudent(Long studentId, Student student);
+
 }

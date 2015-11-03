@@ -28,7 +28,7 @@ public class PublicSchoolEndpointServiceImpl implements PublicSchoolEndpointServ
 
     @Inject
     private SchoolsService schoolsService;
-    
+
     private final static Logger log = Logger.getLogger(PublicSchoolEndpointServiceImpl.class.getName());
 
     public PublicSchoolEndpointServiceImpl() {
@@ -37,7 +37,7 @@ public class PublicSchoolEndpointServiceImpl implements PublicSchoolEndpointServ
 
     @Override
     public List<School> getAllSchools() throws ServiceException {
-        return schoolsService.getAllSchools();    
+        return schoolsService.getAllSchools();
     }
 
     @Override
@@ -49,7 +49,6 @@ public class PublicSchoolEndpointServiceImpl implements PublicSchoolEndpointServ
     public Long newTeacher(Teacher teacher) {
         return schoolsService.newTeacher(teacher);
     }
-
 
     @Override
     public Long newYear(Year year) {
@@ -90,7 +89,7 @@ public class PublicSchoolEndpointServiceImpl implements PublicSchoolEndpointServ
     public List<Course> getCoursesBySchool(Long newSchoolId) {
         return schoolsService.getCoursesBySchool(newSchoolId);
     }
-    
+
     @Override
     public School getSchool(Long schoolId) {
         return schoolsService.getSchool(schoolId);
@@ -125,9 +124,26 @@ public class PublicSchoolEndpointServiceImpl implements PublicSchoolEndpointServ
     public Course getCourse(Long courseId) {
         return schoolsService.getCourse(courseId);
     }
-    
-    
-    
+
+    @Override
+    public void deleteStudent(Long studentId) throws ServiceException {
+        schoolsService.deleteStudent(studentId);
+    }
+
+    @Override
+    public Student getStudent(Long studentId) {
+        return schoolsService.getStudent(studentId);
+    }
+
+    @Override
+    public List<Student> getAllStudents() {
+        return schoolsService.getAllStudents();
+    }
+
+    @Override
+    public void updateStudent(Long studentId, Student student) throws ServiceException {
+        schoolsService.updateStudent(studentId, student);
+    }
     
     
 

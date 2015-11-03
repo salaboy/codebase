@@ -32,7 +32,12 @@
     'course.list.controller',
     'course.new.controller',
     'course.details.controller',
-    'course.edit.controller'
+    'course.edit.controller',
+    'student.factory',
+    'student.list.controller',
+    'student.new.controller',
+    'student.details.controller',
+    'student.edit.controller'
   ])
         .config(function ($stateProvider, $urlRouterProvider, helloProvider) {
             helloProvider.init({
@@ -84,6 +89,25 @@
                     url: '/courses/details',
                     templateUrl: 'scripts/Courses/Details/details.html',
                     controller: 'courseDetailsController'
+                }).state('students', {
+                    url: '/students',
+                    templateUrl: 'scripts/Students/List/list.html',
+                    controller: 'studentsListController'
+                })
+                .state('students/new', {
+                    url: '/students/new',
+                    templateUrl: 'scripts/Students/New/new.html',
+                    controller: 'newStudentController'
+                })
+                .state('students/edit', {
+                    url: '/students/edit',
+                    templateUrl: 'scripts/Students/Edit/edit.html',
+                    controller: 'editStudentController'
+                })
+                .state('students/details', {
+                    url: '/students/details',
+                    templateUrl: 'scripts/Students/Details/details.html',
+                    controller: 'studentDetailsController'
                 });
         }).run(function () {});
 })();

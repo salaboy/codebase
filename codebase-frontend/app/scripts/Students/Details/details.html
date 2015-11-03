@@ -1,6 +1,6 @@
 <div class="sheet topbar">
     <div class="title">
-        School Details
+        Student Details
     </div>
 </div>
 <div class="content detail">
@@ -8,23 +8,25 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4">
-                    {{school.schoolName}}
+                    {{student.firstname}}
                 </div>
                 <div class="col-md-4">
-                    {{school.description}}
+                    {{student.lastname}}
                 </div>
                 <div class="col-md-4">
-                    {{school.website}}
+                    {{student.email}}
                 </div>
-                <a class="button inverted" href="#/courses?schoolId={{school.id}}">View Courses</a>
+                 <div class="col-md-4">
+                    {{student.password}}
+                </div>
             </div>
         </div>
     </div>
     <div class="detail-actions">
         <div class="main-action">
-            <a href="#/schools" class="link">Back</a>
-            
-            <button class="button" ng-click="go('/schools/edit', {id: school.id })">Edit</button>
+            <a href="#/students" class="link">Back</a>
+
+            <button class="button" ng-click="go('/students/edit', {id: student.id})">Edit</button>
         </div>
     </div>
 </div>
