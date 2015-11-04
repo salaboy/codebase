@@ -8,17 +8,27 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4">
-                    {{student.firstname}}
+                    <h1>{{student.firstname}} {{student.lastname}}</h1>
+                    <p>
+                        {{student.gender}}
+                    </p>
+                    <p>
+                        {{student.birthday}}
+                    </p>
+                    <h5>Contact Data</h5>
+                    <p>
+                        {{student.email}}
+                    </p>
                 </div>
                 <div class="col-md-4">
-                    {{student.lastname}}
+                   <h2>Courses & Groups</h2>
+                   <p>Data about courses and groups for this student</p>
                 </div>
                 <div class="col-md-4">
-                    {{student.email}}
+                   <h2>Reports</h2>
+                   <p>Student Reports</p>
                 </div>
-                 <div class="col-md-4">
-                    {{student.password}}
-                </div>
+                
             </div>
         </div>
     </div>

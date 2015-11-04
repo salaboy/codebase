@@ -10,22 +10,22 @@
 <div class="sheet searchbar">
     <form class="fluid">
         <div class="form-group">
-            <input type="text" placeholder="Search" class="form-control search">
+            <input type="text" placeholder="Search" ng-model="search" class="form-control search">
         </div>
     </form>
 </div>
 <div class="content list"  >
-    <div ng-repeat="student in students">
+    <div ng-repeat="student in students | filter: search as searchresults">
         <div class="list-item" ng-click="go('/students/details',{id: student.id})">
             <div class="item-name">
-                {{student.firstname}} - {{student.lastname}}
+                {{student.firstname}} {{student.lastname}}
             </div>
             <div class="item-detail">
                 {{student.email}}
             </div>
         </div>
-
     </div>
+    <div ng-if="searchresults.length == 0">No Results</div>
     <div class="list-actions">
         <a class="button inverted" href="#/students/new">Create Student</a>
     </div> 

@@ -5,6 +5,10 @@
     background-color: @white;
     padding: @padding;
     box-sizing: border-box;
+    transition: padding 1s ease-in-out;
+    &.ng-enter, &.ng-leave {
+        transition: all 0s !important;
+    }
  
     &.bottom {
         width: 100%;
@@ -104,26 +108,31 @@
     #main-nav {
         list-style-type: none;
         padding: 0;
-        margin: 0;
+        margin: 0 0 0 -1px;
+        font-size: 0;
         .sidebar-link {
             border-bottom: 1px solid lighten(@grayDark, 10%);
+            border-left: 1px solid lighten(@grayDark, 10%);
+            width: 50%;
+            display: inline-block;
+            box-sizing: border-box;
             a {
-                padding: @padding/4 @padding/2;
+                padding: @padding/4 @padding/4;
                 display: block;
                 color: @gray;
-                text-transform: uppercase;
+               
                 font-size: @fontSizeNav;
+                height: @mainNavLinkHeight;
                 &:hover {
-                    background-color: @blue;
-                    color: @white;
+                    color: @blue;
                     text-decoration: none;
                 }
             }
             &.active {
                 a {
-                    color: @blue;
+                    background-color: @blue;
                     &:hover {
-                        color: @grayDark;
+                        color: @white;
                     }
                 }
             }

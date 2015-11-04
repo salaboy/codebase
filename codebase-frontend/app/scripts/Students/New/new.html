@@ -25,16 +25,47 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label>Email</label>
                                 <input type="text" class="form-control" ng-model="student.email" >
                             </div>
                         </div>
+                        
+                    </div>
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Password</label>
-                                <input type="password"  ng-model="student.password" class="form-control">
+                                <label>Birth Date</label>
+                                <input type="date" class="form-control" ng-model="student.birthday" >
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Gender</label>
+                                <div class="radio-options">
+                                    <div class="radio-option">
+                                        <label>
+                                            <input type="radio" class="form-control" name="gender" ng-model="student.gender" value="male"> Male
+                                        </label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <label>
+                                            <input type="radio" class="form-control" name="gender" ng-model="student.gender" value="Female"> Female
+                                        </label>
+                                    </div>
+                                     
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Notes</label>
+                                 <textarea class="form-control" ng-model="student.notes"></textarea>
                             </div>
                         </div>
                     </div>
