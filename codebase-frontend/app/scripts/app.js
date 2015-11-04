@@ -37,7 +37,12 @@
     'student.list.controller',
     'student.new.controller',
     'student.details.controller',
-    'student.edit.controller'
+    'student.edit.controller',
+    'teacher.factory',
+    'teacher.list.controller',
+    'teacher.new.controller',
+    'teacher.edit.controller',
+    'teacher.details.controller'
   ])
         .config(function ($stateProvider, $urlRouterProvider, helloProvider) {
             helloProvider.init({
@@ -108,6 +113,26 @@
                     url: '/students/details',
                     templateUrl: 'scripts/Students/Details/details.html',
                     controller: 'studentDetailsController'
+                })
+                .state('teachers', {
+                    url: '/teachers',
+                    templateUrl: 'scripts/Teachers/List/list.html',
+                    controller: 'teachersListController'
+                })
+                .state('teachers/new', {
+                    url: '/teachers/new',
+                    templateUrl: 'scripts/Teachers/New/new.html',
+                    controller: 'newTeacherController'
+                })
+                .state('teachers/edit', {
+                    url: '/teachers/edit',
+                    templateUrl: 'scripts/Teachers/Edit/edit.html',
+                    controller: 'editTeacherController'
+                })
+                .state('teachers/details', {
+                    url: '/teachers/details',
+                    templateUrl: 'scripts/Teachers/Details/details.html',
+                    controller: 'teacherDetailsController'
                 });
         }).run(function () {});
 })();

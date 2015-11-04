@@ -1,0 +1,92 @@
+
+    <div class="sheet topbar">
+        <div class="title">
+            Edit Teacher
+        </div>
+    </div>
+
+    <div class="content form">
+        <div class="box">
+            <form>
+            <div class="container-fluid">
+                <fieldset>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text"  ng-model="teacher.firstname" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text"  ng-model="teacher.lastname" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="text" class="form-control" ng-model="teacher.email" >
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Birth Date</label>
+                                <input type="date" class="form-control" ng-model="teacher.birthday" >
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Gender</label>
+                                <div class="radio-options">
+                                    <div class="radio-option">
+                                        <label>
+                                            <input type="radio" class="form-control" name="gender" ng-model="teacher.gender" value="male"> Male
+                                        </label>
+                                    </div>
+                                    <div class="radio-option">
+                                        <label>
+                                            <input type="radio" class="form-control" name="gender" ng-model="teacher.gender" value="Female"> Female
+                                        </label>
+                                    </div>
+                                     
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Notes</label>
+                                 <textarea class="form-control" ng-model="teacher.notes"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="row">
+                        <div class="col-md-12">
+                        <a href class="button delete" ng-click="deleteteacher(teacher.id)">Delete teacher</a>
+                       </div>
+                    </div>
+                </fieldset>
+            </div>
+        </form>
+        </div>
+        <div class="form-actions">
+            
+            <a class="link inverted" href="#/teachers">Cancel</a>
+            <div class="main-action">
+                <button class="button main inverted" ng-click="updateTeacher(teacher)">Update</button>
+            </div>
+        </div>
+    </div>
+
+

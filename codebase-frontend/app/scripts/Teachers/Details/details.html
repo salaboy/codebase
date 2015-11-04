@@ -1,0 +1,42 @@
+<div class="sheet topbar">
+    <div class="title">
+        Teacher Details
+    </div>
+</div>
+<div class="content detail">
+    <div class="box">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <h1>{{teacher.firstname}} {{teacher.lastname}}</h1>
+                    <p>
+                        {{teacher.gender}}
+                    </p>
+                    <p>
+                        {{teacher.birthday}}
+                    </p>
+                    <h5>Contact Data</h5>
+                    <p>
+                        {{teacher.email}}
+                    </p>
+                </div>
+                <div class="col-md-4">
+                   <h2>Courses & Groups</h2>
+                   <p>Data about courses and groups for this teacher</p>
+                </div>
+                <div class="col-md-4">
+                   <h2>Reports</h2>
+                   <p>Teacher Reports</p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="detail-actions">
+        <div class="main-action">
+            <a href="#/teachers" class="link">Back</a>
+
+            <button class="button" ng-click="go('/teachers/edit', {id: teacher.id})">Edit</button>
+        </div>
+    </div>
+</div>
