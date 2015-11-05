@@ -40,7 +40,8 @@
     'teacher.list.controller',
     'teacher.new.controller',
     'teacher.edit.controller',
-    'teacher.details.controller'
+    'teacher.details.controller',
+    'dashboard.controller'
   ])
         .config(function ($stateProvider, $urlRouterProvider, helloProvider) {
             helloProvider.init({
@@ -53,6 +54,11 @@
                     url: '/',
                     templateUrl: 'scripts/Login/login.html',
                     controller: 'loginController'
+                })
+                .state('dashboard', {
+                    url: '/dashboard',
+                    templateUrl: 'scripts/Dashboard/dashboard.html',
+                    controller: 'dashboardController'
                 })
                 .state('schools', {
                     url: '/schools',
