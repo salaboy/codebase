@@ -80,90 +80,115 @@ public interface PublicSchoolEndpointService extends Serializable {
     @Produces({MediaType.APPLICATION_JSON})
     void deleteStudent(@PathParam("id") Long studentId) throws ServiceException;
 
-    @POST
-    @Path("teachers/new")
-    @Consumes({MediaType.APPLICATION_JSON})
-    @Produces({MediaType.APPLICATION_JSON})
-    Long newTeacher(@NotNull Teacher teacher);
 
     @POST
     @Path("/courses/new")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    Long newCourse(@NotNull Course course);
+    Long newCourse(@NotNull Course course) throws ServiceException;
 
     @POST
     @Path("years/new")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    Long newYear(@NotNull Year year);
+    Long newYear(@NotNull Year year) throws ServiceException;
 
     @POST
     @Path("classes/new")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    Long newSchoolClass(@NotNull SchoolClass schoolClass);
+    Long newSchoolClass(@NotNull SchoolClass schoolClass) throws ServiceException;
 
     @POST
     @Path("students/new")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    Long newStudent(@NotNull Student student);
+    Long newStudent(@NotNull Student student) throws ServiceException;
     
     @PUT
     @Path("classes/{id}/enroll")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    void enrollStudentToSchoolClass(@PathParam("id") Long schoolClassId, Student student);
+    void enrollStudentToSchoolClass(@PathParam("id") Long schoolClassId, Student student) throws ServiceException;
 
     @GET
     @Path("{id}/students")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    List<Student> getStudentsBySchoolClassCode(@PathParam("id") Long newSchoolId, String code);
+    List<Student> getStudentsBySchoolClassCode(@PathParam("id") Long newSchoolId, String code) throws ServiceException;
 
     @GET
     @Path("{id}/students")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    List<SchoolClass> getSchoolClassByYear(@PathParam("id") Long newSchoolId, String string);
+    List<SchoolClass> getSchoolClassByYear(@PathParam("id") Long newSchoolId, String string) throws ServiceException;
     
     @GET
     @Path("{id}/years")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    List<Year> getYearsBySchool(@PathParam("id") Long newSchoolId);
+    List<Year> getYearsBySchool(@PathParam("id") Long newSchoolId) throws ServiceException;
 
     @GET
     @Path("{id}/courses")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    List<Course> getCoursesBySchool(@PathParam("id") Long newSchoolId);
+    List<Course> getCoursesBySchool(@PathParam("id") Long newSchoolId) throws ServiceException;
     
     @GET
     @Path("/students")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    List<Student> getAllStudents();
+    List<Student> getAllStudents() throws ServiceException;
   
     @GET
     @Path("/{id}")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    School getSchool(@PathParam("id") Long schoolId);
+    School getSchool(@PathParam("id") Long schoolId) throws ServiceException;
     
     @GET
     @Path("/courses/{id}")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    Course getCourse(@PathParam("id") Long courseId);
+    Course getCourse(@PathParam("id") Long courseId) throws ServiceException;
     
     
     @GET
     @Path("/students/{id}")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    Student getStudent(@PathParam("id") Long studentId);
+    Student getStudent(@PathParam("id") Long studentId) throws ServiceException;
 
-
+    
+    @GET
+    @Path("/teachers/{id}")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    Teacher getTeacher(@PathParam("id") Long teacherId) throws ServiceException;
+    
+    @GET
+    @Path("/teachers")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    List<Teacher> getAllTeachers() throws ServiceException;
+    
+    @POST
+    @Path("teachers/new")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    Long newTeacher(@NotNull Teacher teacher) throws ServiceException;
+    
+    @DELETE
+    @Path("/teachers/{id}")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    void deleteTeacher(@PathParam("id") Long teacherId) throws ServiceException;
+    
+    @PUT
+    @Path("teachers/{id}/update")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    void updateTeacher(@PathParam("id") Long teacherId, @NotNull Teacher teacher) throws ServiceException;
+    
 }

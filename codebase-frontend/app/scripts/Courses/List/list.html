@@ -1,6 +1,6 @@
 <div class="sheet topbar">
     <div class="title">
-        Courses
+        Courses - For School {{schoolId}}
     </div>
 </div>
 <div class="sheet searchbar">
@@ -12,7 +12,7 @@
 </div>
 <div class="content list"  >
     <div ng-repeat="course in courses">
-        <div class="list-item" ng-click="go('/courses/details',{id: course.id})">
+        <div class="list-item" ng-click="go('/courses/details',{id: course.id, schoolId: schoolId})">
             <div class="item-name">
                 {{course.id}} - {{course.subject}}
             </div>
@@ -20,7 +20,7 @@
 
     </div>
     <div class="list-actions">
-        <a class="button inverted" href="#/courses/new">Create Course</a>
+        <a class="button inverted" href="#/courses/new?schoolId={{schoolId}}">Create Course</a>
     </div> 
 
 

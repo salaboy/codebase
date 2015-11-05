@@ -16,7 +16,7 @@
 </div>
 <div class="content list"  >
     <div ng-repeat="teacher in teachers | filter: search as searchresults">
-        <div class="list-item" ng-click="go('/students/details',{id: student.id})">
+        <div class="list-item" ng-click="go('/teachers/details',{id: teacher.id})">
             <div class="item-name">
                 {{teacher.firstname}} {{teacher.lastname}}
             </div>

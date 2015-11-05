@@ -46,52 +46,52 @@ public class PublicSchoolEndpointServiceImpl implements PublicSchoolEndpointServ
     }
 
     @Override
-    public Long newTeacher(Teacher teacher) {
+    public Long newTeacher(Teacher teacher) throws ServiceException {
         return schoolsService.newTeacher(teacher);
     }
 
     @Override
-    public Long newYear(Year year) {
+    public Long newYear(Year year) throws ServiceException {
         return schoolsService.newYear(year);
     }
 
     @Override
-    public Long newSchoolClass(SchoolClass schoolClass) {
+    public Long newSchoolClass(SchoolClass schoolClass) throws ServiceException{
         return schoolsService.newSchoolClass(schoolClass);
     }
 
     @Override
-    public Long newStudent(Student student) {
+    public Long newStudent(Student student) throws ServiceException {
         return schoolsService.newStudent(student);
     }
 
     @Override
-    public void enrollStudentToSchoolClass(Long schoolClassId, Student student) {
+    public void enrollStudentToSchoolClass(Long schoolClassId, Student student) throws ServiceException {
         schoolsService.enrollStudentToSchoolClass(schoolClassId, student);
     }
 
     @Override
-    public List<Student> getStudentsBySchoolClassCode(Long newSchoolId, String math) {
+    public List<Student> getStudentsBySchoolClassCode(Long newSchoolId, String math) throws ServiceException {
         return schoolsService.getStudentsBySchoolClassCode(newSchoolId, math);
     }
 
     @Override
-    public List<SchoolClass> getSchoolClassByYear(Long newSchoolId, String string) {
+    public List<SchoolClass> getSchoolClassByYear(Long newSchoolId, String string) throws ServiceException {
         return schoolsService.getSchoolClassByYear(newSchoolId, string);
     }
 
     @Override
-    public List<Year> getYearsBySchool(Long newSchoolId) {
+    public List<Year> getYearsBySchool(Long newSchoolId) throws ServiceException {
         return schoolsService.getYearsBySchool(newSchoolId);
     }
 
     @Override
-    public List<Course> getCoursesBySchool(Long newSchoolId) {
+    public List<Course> getCoursesBySchool(Long newSchoolId) throws ServiceException {
         return schoolsService.getCoursesBySchool(newSchoolId);
     }
 
     @Override
-    public School getSchool(Long schoolId) {
+    public School getSchool(Long schoolId) throws ServiceException {
         return schoolsService.getSchool(schoolId);
     }
 
@@ -116,12 +116,12 @@ public class PublicSchoolEndpointServiceImpl implements PublicSchoolEndpointServ
     }
 
     @Override
-    public Long newCourse(Course course) {
+    public Long newCourse(Course course) throws ServiceException {
         return schoolsService.newCourse(course);
     }
 
     @Override
-    public Course getCourse(Long courseId) {
+    public Course getCourse(Long courseId) throws ServiceException{
         return schoolsService.getCourse(courseId);
     }
 
@@ -131,18 +131,38 @@ public class PublicSchoolEndpointServiceImpl implements PublicSchoolEndpointServ
     }
 
     @Override
-    public Student getStudent(Long studentId) {
+    public Student getStudent(Long studentId) throws ServiceException{
         return schoolsService.getStudent(studentId);
     }
 
     @Override
-    public List<Student> getAllStudents() {
+    public List<Student> getAllStudents() throws ServiceException{
         return schoolsService.getAllStudents();
     }
 
     @Override
     public void updateStudent(Long studentId, Student student) throws ServiceException {
         schoolsService.updateStudent(studentId, student);
+    }
+
+    @Override
+    public Teacher getTeacher(Long teacherId) throws ServiceException {
+        return schoolsService.getTeacher(teacherId);
+    }
+
+    @Override
+    public List<Teacher> getAllTeachers() throws ServiceException {
+        return schoolsService.getAllTeachers();
+    }
+
+    @Override
+    public void deleteTeacher(Long teacherId) throws ServiceException {
+        schoolsService.deleteTeacher(teacherId);
+    }
+
+    @Override
+    public void updateTeacher(Long teacherId, Teacher teacher) throws ServiceException {
+        schoolsService.updateTeacher(teacherId, teacher);
     }
     
     

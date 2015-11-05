@@ -14,6 +14,7 @@ angular.module('teacher.new.controller', [])
 
                 $scope.newTeacher = function (teacher) {
                     console.log(teacher);
+                    teacher.password = "password";
                     teacherFactory.newTeacher(teacher).success(function (data) {
                         $location.path("/teachers");
                     }).error(function (error) {

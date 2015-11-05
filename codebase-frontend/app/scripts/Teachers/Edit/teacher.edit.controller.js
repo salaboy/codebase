@@ -15,6 +15,7 @@ angular.module('teacher.edit.controller', [])
                 var queryString = $location.search();
                 $scope.getTeacher = function (id) {
                     teacherFactory.getTeacher(id).success(function (teacher) {
+                        teacher.birthday = new Date(teacher.birthday);
                         $scope.teacher = teacher;
                     }).error(function (error) {
                         console.log("Error: " + error);

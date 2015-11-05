@@ -26,17 +26,18 @@
 
   
     
-    <div class="sidebar">
+    <div class="sidebar" ng-controller="navController">
+        {{status}}
         <nav>
             <ul id="main-nav">
                 <li class="active sidebar-link">
-                    <a href="#/schools">Schools</a>
+                    <a ng-click="go('/schools', {})">Schools</a>
                 </li>
                 <li class="sidebar-link">
-                    <a href="#/students">Students</a>
+                    <a ng-click="go('/students', {})">Students</a>
                 </li>
                 <li class="sidebar-link">
-                    <a href="#/teachers">Teachers</a>
+                    <a ng-click="go('/teachers', {})">Teachers</a>
                 </li>
             </ul>
             
@@ -88,8 +89,8 @@
 
     <script src="scripts/Shared/rest.factory.js"></script>
     <script src="scripts/Shared/constants.factory.js"></script>
-    <script src="scripts/Login/login.factory.js"></script>
-    <script src="scripts/Login/login.controller.js"></script>
+    <script src="scripts/Nav/nav.controller.js"></script>
+
     <script src="scripts/Schools/school.factory.js"></script>
     <script src="scripts/Schools/New/school.new.controller.js"></script>
     <script src="scripts/Schools/List/school.list.controller.js"></script>

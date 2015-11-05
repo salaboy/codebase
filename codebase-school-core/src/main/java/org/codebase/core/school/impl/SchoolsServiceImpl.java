@@ -183,8 +183,41 @@ public class SchoolsServiceImpl implements SchoolsService {
         studentById.setLastname(student.getLastname());
         studentById.setEmail(student.getEmail());
         studentById.setPassword(student.getPassword());
+        studentById.setBio(student.getBio());
+        studentById.setBirthday(student.getBirthday());
         em.merge(studentById);
     }
+
+    @Override
+    public Teacher getTeacher(Long teacherId) {
+        return em.find(Teacher.class, teacherId);
+    }
+
+    @Override
+    public List<Teacher> getAllTeachers() {
+        return (List<Teacher>) em.createNamedQuery("Teacher.getAll").getResultList();
+    }
+
+    @Override
+    @Transactional
+    public void deleteTeacher(Long teacherId) {
+        Teacher teacherById = em.find(Teacher.class, teacherId);
+        em.remove(teacherById);
+    }
+
+    @Override
+    @Transactional
+    public void updateTeacher(Long teacherId, Teacher teacher) {
+        Teacher teacherById = em.find(Teacher.class, teacherId);
+        teacherById.setFirstname(teacher.getFirstname());
+        teacherById.setLastname(teacher.getLastname());
+        teacherById.setEmail(teacher.getEmail());
+        teacherById.setPassword(teacher.getPassword());
+        teacherById.setBio(teacher.getBio());
+        teacherById.setBirthday(teacher.getBirthday());
+        em.merge(teacherById);
+    }
+    
     
     
 

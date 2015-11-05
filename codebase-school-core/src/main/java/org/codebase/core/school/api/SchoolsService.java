@@ -64,4 +64,12 @@ public interface SchoolsService {
 
     public void updateStudent(Long studentId, Student student);
 
+    public Teacher getTeacher(Long teacherId);
+
+    public List<Teacher> getAllTeachers();
+
+    public void deleteTeacher(Long teacherId);
+
+    public void updateTeacher(Long teacherId, Teacher teacher);
+
 }

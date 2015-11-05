@@ -13,24 +13,16 @@
     <modules>
     
         <module>codebase-shared-lib</module>
-        
-        <module>codebase-user-model</module>
-        <module>codebase-user-core</module>
-        <module>codebase-user-services</module>
-
 	<module>codebase-school-model</module>
         <module>codebase-school-core</module>
 	<module>codebase-school-services</module>
         
         
 
-<!--        <module>codebase-user-web</module>
-        <module>codebase-frontend</module>-->
+        <!--<module>codebase-frontend</module>-->
 
 
         <module>codebase-kie</module>
-        <module>kie-server-docker</module>
-        <module>kie-server-docker-build</module>
         <module>codebase-kie-tests</module>
     </modules>
   

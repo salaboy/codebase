@@ -10,7 +10,7 @@
 angular.module('course.list.controller', [])
         .controller('coursesListController', ['$scope', '$rootScope', 'courseFactory', '$location', '$http', function ($scope, $rootScope, courseFactory, $location, $http) {
                 $scope.courses = [];
-                var queryString = $location.search();
+                $scope.schoolId = $location.search().schoolId;
                 $scope.go = function (path, data) {
                     $location.path(path).search(data);
                 };
@@ -31,7 +31,7 @@ angular.module('course.list.controller', [])
                     });
                 };
 
-                $scope.loadCourses(queryString.schoolId);
+                $scope.loadCourses($scope.schoolId);
 
 
             }]);

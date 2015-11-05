@@ -1,6 +1,6 @@
 <div class="sheet topbar">
     <div class="title">
-        Course Details
+        Course Details 
     </div>
 </div>
 <div class="content detail">
@@ -20,7 +20,7 @@
         <div class="main-action">
             <a href="#/courses" class="link">Back</a>
             
-            <button class="button" ng-click="go('/courses/edit', {id: course.id })">Edit</button>
+            <button class="button" ng-click="go('/courses/edit', {id: course.id, schoolId: course.school.id })">Edit</button>
         </div>
     </div>
 </div>

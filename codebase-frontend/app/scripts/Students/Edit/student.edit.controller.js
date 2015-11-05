@@ -15,6 +15,7 @@ angular.module('student.edit.controller', [])
                 var queryString = $location.search();
                 $scope.getStudent = function (id) {
                     studentFactory.getStudent(id).success(function (student) {
+                        student.birthday = new Date(student.birthday);
                         $scope.student = student;
                     }).error(function (error) {
                         console.log("Error: " + error);

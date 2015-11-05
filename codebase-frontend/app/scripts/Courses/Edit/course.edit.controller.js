@@ -13,7 +13,8 @@ angular.module('course.edit.controller', [])
                 $scope.course = {
                     school:{}
                 };
-
+                $scope.schoolId = $location.search().schoolId;
+                $scope.course.school.id = $scope.schoolId;
                 var queryString = $location.search();
                 $scope.course.school.id = queryString.id;
                 $scope.getCourse = function (id) {
@@ -27,7 +28,7 @@ angular.module('course.edit.controller', [])
 
                  $scope.deleteCourse = function (id) {
                     courseFactory.deleteCourse(id).success(function (data) {
-                        $location.path("/courses");
+                        $location.path("/courses").search({schoolId: $scope.schoolId});
                     }).error(function (error) {
                         console.log("Error: " + error);
                     });

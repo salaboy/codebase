@@ -7,32 +7,32 @@
 
     function teacherFactory( $http, constants) {
         var service = {
-            newStudent: newStudent,
-            getAllStudents: getAllStudents,
-            getStudent: getStudent,
-            updateStudent: updateStudent,
-            deleteStudent: deleteStudent
+            newTeacher: newTeacher,
+            getAllTeachers: getAllTeachers,
+            getTeacher: getTeacher,
+            updateTeacher: updateTeacher,
+            deleteTeacher: deleteTeacher
         };
 
         return service;
 
-        function newStudent(student) {
-            return $http.post(constants.server + 'schools/teachers/new', student, constants.headers);
+        function newTeacher(teacher) {
+            return $http.post(constants.server + 'schools/teachers/new', teacher, constants.headers);
         }
 
-        function getAllStudents() {
+        function getAllTeachers() {
             return $http.get(constants.server + 'schools/teachers', constants.headers);
         }
         
-        function getStudent(id){
+        function getTeacher(id){
             return $http.get(constants.server + 'schools/teachers/'+id, constants.headers);
         }
        
-       function updateStudent(student){
-           return $http.put(constants.server + 'schools/teachers/'+student.id+'/update', student, constants.headers);
+       function updateTeacher(teacher){
+           return $http.put(constants.server + 'schools/teachers/'+teacher.id+'/update', teacher, constants.headers);
        }
        
-       function deleteStudent(id){
+       function deleteTeacher(id){
            return $http.delete(constants.server + 'schools/teachers/'+id, constants.headers);
        }
     }
