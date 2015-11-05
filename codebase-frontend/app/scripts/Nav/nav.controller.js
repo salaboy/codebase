@@ -48,7 +48,12 @@ angular.module('nav.controller', [])
                 };
             
                 $scope.isActive = function (route) {
-                    return route === $location.path();
+                    
+                    if($location.path().indexOf(route) >= 0){
+                        return true;
+                    }else {
+                        return false;
+                    }
                 };
                 
                 $scope.openSidebar = function(){

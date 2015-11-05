@@ -26,7 +26,7 @@
 
   
     
-    <div class="sidebar" ng-controller="navController" ng-class="{open: sidebarOpen}">
+    <div class="sidebar" ng-controller="navController" ng-class="{open: sidebarOpen, hidden: isActive('/schools')}">
         <div id="main-nav-top" ng-class="{open: mainNavTopOpen}" ng-mouseleave="closeMainNavTop()">
             <div class="title">
                 {{activeSchool.schoolName}}

@@ -11,7 +11,7 @@
     border-right: 1px solid @gray;
     transition: left 1s ease-in-out;
     
-    & + .screen {
+    &:not(.hidden) + .screen {
         @media (min-width: @md) {
             padding: 0 0 0 @sidebarWidth;
             
