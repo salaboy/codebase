@@ -15,18 +15,17 @@
     </form>
 </div>
 <div class="content list"  >
-    <div ng-repeat="school in schools">
-        <div class="list-item" ng-click="go('/schools/details',{id: school.id})">
-            <div class="item-name">
-                {{school.id}} - {{school.schoolName}}
-            </div>
-            <div class="item-detail">
-                {{school.description}}
-                - <a class="button inverted" href="#/courses?schoolId={{school.id}}">View Courses</a>
-            </div>
+    
+    <div class="list-item" ng-click="go('/schools/details',{id: school.id})" ng-repeat="school in schools">
+        <div class="item-name">
+            {{school.id}} - {{school.schoolName}}
         </div>
-
+        <div class="item-detail">
+            {{school.description}}
+            - <a class="button inverted" href="#/courses?schoolId={{school.id}}">View Courses</a>
+        </div>
     </div>
+
     <div class="list-actions">
         <a class="button inverted" href="#/schools/new">Create School</a>
     </div> 

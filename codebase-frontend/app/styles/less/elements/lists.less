@@ -27,6 +27,18 @@
                     color: @blue;
                 }
             }
+           
+        }
+        
+        @media (min-width: @md ) {
+            padding: (@topBarHeight*2 + @padding/2) (@padding - 10) @padding;
+            .list-item {
+                display: inline-block;
+                width: 20%;
+                min-width: 250px;
+                margin: 10px;
+                height: 200px;
+            }
         }
         
         .list-actions {

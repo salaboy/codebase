@@ -15,8 +15,8 @@
     </form>
 </div>
 <div class="content list"  >
-    <div ng-repeat="student in students | filter: search as searchresults">
-        <div class="list-item" ng-click="go('/students/details',{id: student.id})">
+    
+        <div class="list-item" ng-click="go('/students/details',{id: student.id})" ng-repeat="student in students | filter: search as searchresults">
             <div class="item-name">
                 {{student.firstname}} {{student.lastname}}
             </div>
@@ -24,7 +24,7 @@
                 {{student.email}}
             </div>
         </div>
-    </div>
+    
     <div ng-if="searchresults.length == 0">No Results</div>
     <div class="list-actions">
         <a class="button inverted" href="#/students/new">Create Student</a>

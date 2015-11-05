@@ -15,16 +15,16 @@
     </form>
 </div>
 <div class="content list"  >
-    <div ng-repeat="teacher in teachers | filter: search as searchresults">
-        <div class="list-item" ng-click="go('/teachers/details',{id: teacher.id})">
-            <div class="item-name">
-                {{teacher.firstname}} {{teacher.lastname}}
-            </div>
-            <div class="item-detail">
-                {{teacher.email}}
-            </div>
+    
+    <div class="list-item" ng-click="go('/teachers/details',{id: teacher.id})" ng-repeat="teacher in teachers | filter: search as searchresults">
+        <div class="item-name">
+            {{teacher.firstname}} {{teacher.lastname}}
+        </div>
+        <div class="item-detail">
+            {{teacher.email}}
         </div>
     </div>
+    
     <div ng-if="searchresults.length == 0">No Results</div>
     <div class="list-actions">
         <a class="button inverted" href="#/teachers/new">Create teacher</a>
