@@ -26,25 +26,55 @@
 
   
     
-    <div class="sidebar" ng-controller="navController">
-        {{status}}
+    <div class="sidebar" ng-controller="navController" ng-class="{open: sidebarOpen}">
+        <div id="main-nav-top" ng-class="{open: mainNavTopOpen}" ng-mouseleave="closeMainNavTop()">
+            <div class="title">
+                {{activeSchool.schoolName}}
+                <div class="actions">
+                    <a href class="link small" ng-click="openMainNavTop()" ng-if="!mainNavTopOpen">Change</a>
+                    <a href class="link small" ng-click="openMainNavTop()" ng-if="mainNavTopOpen">Close</a>
+                </div>
+            </div>
+            <div class="top-list">
+                <div ng-repeat="school in schools">
+                    <div class="list-item" ng-if="school.id != activeSchool.id">
+                        <a href ng-click="changeActiveSchool(school.id)">{{school.schoolName}}</a>
+                    </div>
+
+                </div>
+                <div class="list-item">
+                    <div class="item-name">
+                        <a href >All Schools</a>
+                    </div>
+                </div>
+                <div class="list-action">
+                    <a href ng-click="go('/schools', {})" class="link small">Manage Schools</a>
+                </div>
+            </div>
+           
+            
+        </div>
         <nav>
-            <ul id="main-nav">
-                <li class="active sidebar-link">
-                    <a ng-click="go('/schools', {})">Schools</a>
+            <ul id="main-nav" ng-class="{inactive: mainNavTopOpen}" ng-mouseover="closeMainNavTop()">
+               <!-- <li class="sidebar-link" ng-class="{active: isActive('/schools')}">
+                    <a href ng-click="go('/schools', {})">Schools</a>
+                </li>-->
+                <li class="sidebar-link" ng-class="{active: isActive('/students')}">
+                    <a href ng-click="go('/students', {})">Students</a>
                 </li>
-                <li class="sidebar-link">
-                    <a ng-click="go('/students', {})">Students</a>
+                <li class="sidebar-link" ng-class="{active: isActive('/teachers')}">
+                    <a href ng-click="go('/teachers', {})">Teachers</a>
                 </li>
-                <li class="sidebar-link">
-                    <a ng-click="go('/teachers', {})">Teachers</a>
+                <li class="sidebar-link" ng-class="{active: isActive('/courses')}">
+                    <a href ng-click="go('/courses', {})">Courses & Groups</a>
                 </li>
             </ul>
             
             
         </nav>
         <div class="collapse-button">
-            <a href class="link">Menu</a>
+            <a href class="link small" ng-click="openSidebar()" ng-if="!sidebarOpen">Menu</a>
+            <a href class="link small" ng-click="openSidebar()" ng-if="sidebarOpen">Close</a>
         </div>
     </div>
     
