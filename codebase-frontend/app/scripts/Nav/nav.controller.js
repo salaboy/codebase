@@ -13,10 +13,12 @@ angular.module('nav.controller', [])
                 $scope.status = "Home";
                 $scope.sidebarOpen = false;
                 $scope.mainNavTopOpen = false;
+                $scope.active = true;
                 
                 
                 $scope.schools = [];
                 $scope.activeSchool = [];
+                $scope.activeSchoolId;
             
                 $scope.loadSchools = function () {
 
@@ -28,7 +30,7 @@ angular.module('nav.controller', [])
                         }
                         console.log(" End - Schools Get All : ");
                         $scope.schools = schools;
-                        $scope.activeSchool = schools[0];
+                        
                     }).error(function (error) {
                         console.log("Error: " + error);
                     });
@@ -36,7 +38,7 @@ angular.module('nav.controller', [])
 
                 $scope.loadSchools();
             
-                
+                /* 
                 $scope.changeActiveSchool = function(id){
                    
                     schoolFactory.getSchool(id).success(function (school) {
@@ -46,15 +48,7 @@ angular.module('nav.controller', [])
                     });
  
                 };
-            
-                $scope.isActive = function (route) {
-                    
-                    if($location.path().indexOf(route) >= 0){
-                        return true;
-                    }else {
-                        return false;
-                    }
-                };
+                */
                 
                 $scope.openSidebar = function(){
                     $scope.sidebarOpen = !$scope.sidebarOpen;
@@ -79,6 +73,18 @@ angular.module('nav.controller', [])
                     if($( window ).width() > 992) {
                          $scope.sidebarOpen = false;
                         $scope.$apply();
+                    }
+                });
+            
+            
+                $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
+                    console.log(toState);
+                    console.log(toParams);
+                    if(toParams.schoolId) {
+                        $scope.activeSchoolId = toParams.schoolId;
+                        $scope.active = true;
+                    }else {
+                        $scope.active = false;
                     }
                 });
 

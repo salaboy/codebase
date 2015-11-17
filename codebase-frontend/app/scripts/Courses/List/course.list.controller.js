@@ -8,9 +8,12 @@
  * Controller of the codebaseFrontendApp
  */
 angular.module('course.list.controller', [])
-        .controller('coursesListController', ['$scope', '$rootScope', 'courseFactory', '$location', '$http', function ($scope, $rootScope, courseFactory, $location, $http) {
+        .controller('coursesListController', ['$scope', '$rootScope', 'courseFactory', '$location', '$http', '$stateParams', function ($scope, $rootScope, courseFactory, $location, $http, $stateParams) {
+            
+              
+            
                 $scope.courses = [];
-                $scope.schoolId = $location.search().schoolId;
+                $scope.schoolId = $stateParams.schoolId;
                 $scope.go = function (path, data) {
                     $location.path(path).search(data);
                 };

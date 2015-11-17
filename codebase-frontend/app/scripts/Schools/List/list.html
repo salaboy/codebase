@@ -21,9 +21,9 @@
             {{school.id}} - {{school.schoolName}}
         </div>
         <div class="item-detail">
-            {{school.description}}
-            - <a class="button inverted" href="#/courses?schoolId={{school.id}}">View Courses</a>
+            {{school.description}} 
         </div>
+        <a class="button inverted" ui-sref="dashboard({ schoolId: school.id })">Manage School</a>
     </div>
 
     <div class="list-actions">
